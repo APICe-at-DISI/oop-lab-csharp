@@ -3,23 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7-DynamicDispatch", "LezioneCSharp\7-DynamicDispatch.csproj", "{1529843B-FF33-4F41-88DB-0600305D16E0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7-DynamicDispatch", "7-DynamicDispatch\7-DynamicDispatch.csproj", "{1529843B-FF33-4F41-88DB-0600305D16E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2-Indexers", "Indexer\2-Indexers.csproj", "{19A94925-0D6B-48DA-902F-73426BA1FEFD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2-Indexers", "2-Indexers\2-Indexers.csproj", "{19A94925-0D6B-48DA-902F-73426BA1FEFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3-OperatorsOverloading", "OperatorsOverloading\3-OperatorsOverloading.csproj", "{9D1D61B7-43BF-4689-94F2-865B1BFD7428}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3-OperatorsOverloading", "3-OperatorsOverloading\3-OperatorsOverloading.csproj", "{9D1D61B7-43BF-4689-94F2-865B1BFD7428}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4-ExtensionMethods", "ExtensionMethods\4-ExtensionMethods.csproj", "{C7B4BC1A-856E-417E-A869-9A5D6A546E87}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4-ExtensionMethods", "4-ExtensionMethods\4-ExtensionMethods.csproj", "{C7B4BC1A-856E-417E-A869-9A5D6A546E87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1-Properties", "Properties\1-Properties.csproj", "{E5DA6887-65A5-4D69-BA3E-9E3AF48F4C3F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1-Properties", "1-Properties\1-Properties.csproj", "{E5DA6887-65A5-4D69-BA3E-9E3AF48F4C3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5-DelegatesAndEvents", "Delegates\5-DelegatesAndEvents.csproj", "{58DAB5B2-A398-4192-8E2E-63C798E6706E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5-DelegatesAndEvents", "5-DelegatesAndEvents\5-DelegatesAndEvents.csproj", "{58DAB5B2-A398-4192-8E2E-63C798E6706E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6-NullablesAndOperators", "NullablesAndOperators\6-NullablesAndOperators.csproj", "{D7F1F9AA-D8F6-48D5-B5B8-BF071F5A2077}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6-NullablesAndOperators", "6-NullablesAndOperators\6-NullablesAndOperators.csproj", "{D7F1F9AA-D8F6-48D5-B5B8-BF071F5A2077}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "8-Enumerables", "Enumerables\8-Enumerables.csproj", "{0EDC2948-74F5-4DAE-80D3-22E30A25D617}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "8-Enumerables", "8-Enumerables\8-Enumerables.csproj", "{0EDC2948-74F5-4DAE-80D3-22E30A25D617}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "9-Iterators", "ConsoleApp1\9-Iterators.csproj", "{999339D2-DC10-4F04-94A6-DC8F848F9538}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "9-Iterators", "9-Iterators\9-Iterators.csproj", "{999339D2-DC10-4F04-94A6-DC8F848F9538}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
