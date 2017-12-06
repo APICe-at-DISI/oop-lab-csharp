@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace OperatorsOverloading
 {
 
-    class OperatorsOverloading
+    class MainOperatorsOverloading
     {
         static void Main(string[] args)
         {

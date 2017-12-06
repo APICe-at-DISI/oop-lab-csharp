@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Delegates
 {
 
-    class DelegatesAndEvents
+    class MainDelegatesAndEvents
     {
         static void OnSurnameChanged(string newSurname)
         {

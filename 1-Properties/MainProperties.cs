@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Properties
 {
-    class Properties
+    class MainProperties
     {
         static void Main(string[] args)
         {

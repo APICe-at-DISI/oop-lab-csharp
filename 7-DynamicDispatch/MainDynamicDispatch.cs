@@ -22,7 +22,7 @@ namespace LezioneCSharp
             return "b";
         }
     }
-    static class DynamicDispatch
+    static class MainDynamicDispatch
     {
         static void Print(A x)
         {

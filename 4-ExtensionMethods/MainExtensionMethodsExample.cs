@@ -28,7 +28,7 @@ namespace ExtensionMethods
     //    }
     //}
 
-    class ExtensionMethodsExample
+    class MainExtensionMethodsExample
     {
         static void Main(string[] args)
         {

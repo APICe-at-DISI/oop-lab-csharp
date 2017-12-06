@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Indexer
 {
-    class Indexers
+    class MainIndexers
     {
         static void Main(string[] args)
         {

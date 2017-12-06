@@ -43,7 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Complex.cs" />
-    <Compile Include="ExtensionMethodsExample.cs" />
+    <Compile Include="MainExtensionMethodsExample.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

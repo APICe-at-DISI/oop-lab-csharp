@@ -13,7 +13,7 @@ namespace NullablesAndOperators
 
 
 
-    class NullablesAndOperators
+    class MainNullablesAndOperators
     {
         static void Main(string[] args)
         {
