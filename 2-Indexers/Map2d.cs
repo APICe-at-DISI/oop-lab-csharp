@@ -6,20 +6,52 @@ using System.Threading.Tasks;
 
 namespace Indexer
 {
-    class Map2d<TKey1, TKey2, TValue>
+    public class Map2D<TKey1, TKey2, TValue> : IMap2D<TKey1, TKey2, TValue>
     {
-        private IDictionary<Tuple<TKey1, TKey2>, TValue> _entries = new Dictionary<Tuple<TKey1, TKey2>, TValue>();
-
-        public TValue this[TKey1 k1, TKey2 k2]
+        public bool Equals(IMap2D<TKey1, TKey2, TValue> other)
         {
-            get { return this._entries[Tuple.Create(k1, k2)]; }
-            set { this._entries[Tuple.Create(k1, k2)] = value; }
+            throw new NotImplementedException();
+        }
+
+        public TValue this[TKey1 key1, TKey2 key2]
+        {
+            get { throw new NotImplementedException(); }
+            set { throw new NotImplementedException(); }
+        }
+
+        public IList<Tuple<TKey2, TValue>> GetRow(TKey1 key1)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Tuple<TKey1, TValue>> GetColumn(TKey2 key2)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Tuple<TKey1, TKey2, TValue>> GetElements()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Fill(IEnumerable<TKey1> keys1, IEnumerable<TKey2> keys2, Func<TKey1, TKey2, TValue> generator)
+        {
+            throw new NotImplementedException();
         }
 
         public override string ToString()
         {
-            return string.Join(",\n", this._entries
-                .Select(kv => $"({kv.Key.Item1}, {kv.Key.Item2}) -> {kv.Value}"));
+            return base.ToString();
+        }
+
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

@@ -43,7 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Complex.cs" />
-    <Compile Include="MainExtensionMethodsExample.cs" />
+    <Compile Include="ComplexExtensions.cs" />
+    <Compile Include="IComplex.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,53 +1,48 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ExtensionMethods
-{
-    sealed class Complex
+namespace ExtensionMethods {
+
+    internal class Complex : IComplex
     {
-        public double Re { get; }
-        public double Im { get; }
+        public Complex(double re, double im) { }
 
-        public Complex(double re, double im)
+        public bool Equals(IComplex other)
         {
-            this.Re = re;
-            this.Im = im;
+            throw new NotImplementedException();
         }
 
-        public static Complex operator +(Complex x, Complex y)
+        public double Real
         {
-            return new Complex(x.Re + y.Re, y.Im + y.Im);
+            get { throw new NotImplementedException(); }
+        }
+        public double Imaginary
+        {
+            get { throw new NotImplementedException(); }
+        }
+        public double Modulus
+        {
+            get { throw new NotImplementedException(); }
         }
 
-        public static Complex operator -(Complex x, Complex y)
+        public double Phase
         {
-            return new Complex(x.Re - y.Re, y.Im - y.Im);
-        }
-
-        public static Complex operator *(Complex x, Complex y)
-        {
-            return new Complex(x.Re * y.Re - x.Im * y.Im, x.Im * y.Re + x.Re * y.Im);
-        }
-
-        public static Complex operator /(Complex x, Complex y)
-        {
-            double mod2 = y.Re * y.Re + y.Im * y.Im;
-            return new Complex((x.Re * y.Re + x.Im * y.Im) / mod2, (x.Im * y.Re - x.Re * y.Im) / mod2);
+            get { throw new NotImplementedException(); }
         }
 
         public override string ToString()
         {
-            if (this.Im >= 0)
-            {
-                return $"{this.Re} + i{this.Im}";
-            }
-            else
-            {
-                return $"{this.Re} - i{-this.Im}";
-            }
+            return base.ToString();
+        }
+
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
+
 }

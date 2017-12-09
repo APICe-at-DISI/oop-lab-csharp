@@ -42,9 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainIndexers.cs" />
-    <Compile Include="Matrix.cs" />
-    <Compile Include="Map2d.cs" />
+    <Compile Include="IMap2D.cs" />
+    <Compile Include="Map2D.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

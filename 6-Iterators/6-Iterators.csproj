@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1529843B-FF33-4F41-88DB-0600305D16E0}</ProjectGuid>
+    <ProjectGuid>{999339D2-DC10-4F04-94A6-DC8F848F9538}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>LezioneCSharp</RootNamespace>
-    <AssemblyName>LezioneCSharp</AssemblyName>
+    <RootNamespace>ConsoleApp1</RootNamespace>
+    <AssemblyName>ConsoleApp1</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,7 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainDynamicDispatch.cs" />
+    <Compile Include="Java8StreamOperations.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
