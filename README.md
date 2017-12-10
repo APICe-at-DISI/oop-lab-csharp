@@ -102,7 +102,7 @@ Scopo dell'esercizio è implementare la classe `ObservableList` in maniera tale d
 Il test contenuto nella classe `Program` tenta di chiarire il comportamento atteso per le implementazioni dell'interfaccia `IObservableList`.
 Esso mostra inoltre come è possibile registrare ascoltatori di eventi per una specifica lista.
 
-## Esercizio 6 - Iterators
+## Esercizio 6 - Iteratori
 
 Il progetto `Iterators` è finalizzato alla comprensione delle analogie e delle differenze tra gli Stream di Java 8 e gli enumerabili di .Net.
 Per ciò, viene fornita la classe `Java8StreamOperations` contenente le firme di alcuni metodi estensione aventi gli stessi nomi dei metodi dell'interfaccia `Stream` di Java 8 (p.e. `map`, `filter`, `reduce`, etc).
