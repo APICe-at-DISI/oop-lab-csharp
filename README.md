@@ -1,12 +1,13 @@
 # Programmazione a oggetti - Lab C#
 
 L'ordine degli esercizi sarebbe il seguente:
-0. Properties
-0. Indexer
-0. OperatorsOverloading
-0. ExtensionMethods
-0. DelegatesAndEvents
-0. Iterators
+
+1. Properties
+2. Indexer
+3. OperatorsOverloading
+4. ExtensionMethods
+5. DelegatesAndEvents
+6. Iterators
 
 Svolgere gli esercizi in ordine diverso non è un problema.
 
@@ -62,8 +63,11 @@ Scopo dell'esercizio è implementare l'overload degli operatori di confronto, cas
 - l'operatore `-` rimuove tutti gli elementi della seconda lista di destra da quella di sinistra
 
 Inoltre, dev'essere possibile effettuare le seguenti conversioni:
+
 - da array di `TValue` a `List<TValue>`, in maniera implicita
+
 - da valore di tipo `TValue` a `List<TValue>` (contenente un solo elemento!), in maniera implicita
+
 - da `List<TValue>` ad array di `TValue`, in maniera **esplicita**
 
 Il test contenuto nella classe `Program` tenta di chiarire il comportamento della classe `List<TValue>`, nel caso in cui l'overload degli operatori sia stato implementato correttamente.
@@ -77,7 +81,9 @@ Il progetto `ExtensionMethods` consiste in una semplice libreria che fornisce l'
 L'interfaccia è volutamente minimale e delega l'implementazione delle [varie operazioni](https://en.wikipedia.org/wiki/Complex_number#Elementary_operations) ai metodi estensione contenuti nella classe `ComplexExtensions`.
 
 Gli scopi dell'esercizio sono:
+
 - Implementare l'interfaccia `IComplex` nella/nelle maniere che si ritengono migliori
+
 - Implementare le operazioni sui numeri complessi, le cui firme sono presenti nella classe statica nella classe `ComplexExtensions`
 
 Il test contenuto nella classe `Program` tenta di chiarire il comportamento atteso per i metodi estensione suddetti.
