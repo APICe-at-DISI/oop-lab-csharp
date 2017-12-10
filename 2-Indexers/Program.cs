@@ -28,7 +28,7 @@ namespace Indexer
                 }
             }
 
-            var seven = new int[] {7, 14, 21, 28, 35, 42, 49, 56, 63, 70};
+            int[] seven = new int[] {7, 14, 21, 28, 35, 42, 49, 56, 63, 70};
 
             if (pitagoricTable.GetRow(7).Select(t => t.Item2).SequenceEqual(seven))
             {

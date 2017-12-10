@@ -18,16 +18,19 @@ namespace Properties {
         internal Card(Tuple<string, string, int> tuple)
             : this(tuple.Item1, tuple.Item2, tuple.Item3) { }
 
+        // TODO improve
         public string GetSeed()
         {
             return this.seed;
         }
 
+        // TODO improve
         public string GetName()
         {
             return this.name;
         }
 
+        // TODO improve
         public int GetOrdinal()
         {
             return this.ordial;
@@ -35,6 +38,7 @@ namespace Properties {
 
         public override string ToString()
         {
+            // TODO understand string interpolation
             return $"{this.GetType().Name}(Name={this.GetName()}, Seed={this.GetSeed()}, Ordinal={this.GetOrdinal()})";
         }
 

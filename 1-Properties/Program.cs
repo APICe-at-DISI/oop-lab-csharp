@@ -39,6 +39,7 @@ namespace Properties
             df.SetNames(Enum.GetNames(typeof(ItalianNames)).ToList());
             df.SetSeeds(Enum.GetNames(typeof(ItalianSeeds)).ToList());
 
+            // TODO understant string format convention
             Console.WriteLine("The {1} deck has {0} cards: ", df.GetDeckSize(), "italian");
 
             foreach (Card c in df.GetDeck())

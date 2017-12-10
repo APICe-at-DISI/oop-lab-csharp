@@ -12,21 +12,25 @@ namespace Properties
 
         private string[] names;
 
+        // TODO improve
         public IList<string> GetSeeds()
         {
             return this.seeds.ToList();
         }
 
+        // TODO improve
         public void SetSeeds(IList<string> seeds)
         {
             this.seeds = seeds.ToArray();
         }
 
+        // TODO improve
         public IList<string> GetNames()
         {
             return this.seeds.ToList();
         }
 
+        // TODO improve
         public void SetNames(IList<string> names)
         {
             this.names = names.ToArray();

@@ -10,6 +10,11 @@ namespace Iterators {
             throw new NotImplementedException();
         }
 
+        public static IEnumerable<TAny> Peek<TAny>(this IEnumerable<TAny> sequence, Action<TAny> consumer)
+        {
+            throw new NotImplementedException();
+        }
+
         public static IEnumerable<TOther> Map<TAny, TOther>(this IEnumerable<TAny> sequence, Func<TAny, TOther> mapper)
         {
             throw new NotImplementedException();
@@ -35,7 +40,7 @@ namespace Iterators {
             throw new NotImplementedException();
         }
 
-        public static IEnumerable<TAny> Skip<TAny>(this IEnumerable<TAny> sequence, long count)
+        public static IEnumerable<TAny> SkipSome<TAny>(this IEnumerable<TAny> sequence, long count)
         {
             throw new NotImplementedException();
         }
@@ -45,7 +50,7 @@ namespace Iterators {
             throw new NotImplementedException();
         }
 
-        public static IEnumerable<TAny> Take<TAny>(this IEnumerable<TAny> sequence, long count)
+        public static IEnumerable<TAny> TakeSome<TAny>(this IEnumerable<TAny> sequence, long count)
         {
             throw new NotImplementedException();
         }
@@ -62,7 +67,7 @@ namespace Iterators {
 
         public static IEnumerable<int> Range(int start, int count)
         {
-            return Integers().Take(count);
+            return Integers().TakeSome(count);
         }
     }
 

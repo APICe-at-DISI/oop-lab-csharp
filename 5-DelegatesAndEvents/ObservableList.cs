@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace DelegatesAndEvents {
@@ -40,8 +41,21 @@ namespace DelegatesAndEvents {
             throw new System.NotImplementedException();
         }
 
-        public int Count { get; }
-        public bool IsReadOnly { get; }
+        public int Count
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public bool IsReadOnly
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
         public int IndexOf(TItem item)
         {
             throw new System.NotImplementedException();
@@ -66,6 +80,24 @@ namespace DelegatesAndEvents {
         public event ListChangeCallback<TItem> ElementInserted;
         public event ListChangeCallback<TItem> ElementRemoved;
         public event ListElementChangeCallback<TItem> ElementChanged;
+
+        public override string ToString()
+        {
+            // TODO improve
+            return base.ToString();
+        }
+
+        public override bool Equals(object obj)
+        {
+            // TODO improve
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            // TODO improve
+            return base.GetHashCode();
+        }
     }
 
 }

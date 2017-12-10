@@ -15,14 +15,14 @@ namespace OperatorsOverloading
             int[] res1 = new int[] { 3, 4, 5, 4, 3 };
             int[] res2 = new int[] { 3, 4, 4, 3 };
 
-            var lst1 = List.Append(lst.Tail.Tail, List.From(4, 3));
+            List<int> lst1 = List.Append(lst.Tail.Tail, List.From(4, 3));
 
             if (lst1 != (List<int>) res1)
             {
                 throw new Exception("Wrong implementation");
             }
 
-            var lst2 = lst;
+            List<int> lst2 = lst;
             lst2 += List.From(4, 3);
 
             if (lst2 != lst1)
@@ -30,7 +30,7 @@ namespace OperatorsOverloading
                 throw new Exception("Wrong implementation");
             }
 
-            var lst3 = lst;
+            List<int> lst3 = lst;
             lst3 -= 5;
 
             if (lst3 != (List<int>)res2)
