@@ -1,4 +1,4 @@
-# Programmazione a oggetti - Lab C#
+# Programmazione a oggetti - Lab C-Sharp
 
 L'ordine degli esercizi sarebbe il seguente:
 
@@ -19,9 +19,9 @@ Il progetto `Properties` consiste in un semplice programma a riga di comando che
 
 La classe `Program` rappresenta il punto d'ingresso dell'applicazione e, come esempio, genera un mazzo di carte italiane.
 La classe `DeckFactory` permette di costruire un certo numero di istanze della classe `Card` (che andranno a comporre il mazzo) a partire dai nomi dei semi e delle carte.
-Queste classi sono state scritte da un programmatore Java, non abituato a scrivere codice C#.
+Queste classi sono state scritte da un programmatore Java, non abituato a scrivere codice C-Sharp.
 
-Scopo dell'esercizio è "convertire" il codice dallo stile Java allo stile C#, ad esempio usando le proprietà e gli altri costrutti tipici del secondo linguaggio.
+Scopo dell'esercizio è "convertire" il codice dallo stile Java allo stile C-Sharp, ad esempio usando le proprietà e gli altri costrutti tipici del secondo linguaggio.
 
 Notare anche che nel codice vengono impiegate le stringhe formato (alcuni esempi qui: https://msdn.microsoft.com/it-it/library/system.string.format(v=vs.110).aspx) e l'interpolazione di stringhe (alcuni esempi: https://docs.microsoft.com/it-it/dotnet/csharp/language-reference/keywords/interpolated-strings).
 La comprensione di questi aspetti del linguaggio è auspicabile.
@@ -107,6 +107,6 @@ Esso mostra inoltre come è possibile registrare ascoltatori di eventi per una sp
 Il progetto `Iterators` è finalizzato alla comprensione delle analogie e delle differenze tra gli Stream di Java 8 e gli enumerabili di .Net.
 Per ciò, viene fornita la classe `Java8StreamOperations` contenente le firme di alcuni metodi estensione aventi gli stessi nomi dei metodi dell'interfaccia `Stream` di Java 8 (p.e. `map`, `filter`, `reduce`, etc).
 
-Scopo dell'esercizio è implementare i suddetti metodi --- auspicabilmente sfruttando il costrutto degli [iteratori di C#](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/iterators) -- affinchè i metodi della classe `Java8StreamOperations` si comportino come gli omonimi definiti in Java, a cui siamo abituati.
+Scopo dell'esercizio è implementare i suddetti metodi --- auspicabilmente sfruttando il costrutto degli [iteratori di C-Sharp](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/iterators) -- affinchè i metodi della classe `Java8StreamOperations` si comportino come gli omonimi definiti in Java, a cui siamo abituati.
 Per varificare la correttezza delle proprie implementazioni, l'esercizio prevede infine che la pipeline di elaborazione presente nella classe `Program` venga riscritta sfruttando i metodi estensione precedentemente implementati.
 
