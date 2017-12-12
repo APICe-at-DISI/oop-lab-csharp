@@ -19,5 +19,7 @@ namespace Indexer
         IList<Tuple<TKey1, TKey2, TValue>> GetElements();
 
         void Fill(IEnumerable<TKey1> keys1, IEnumerable<TKey2> keys2, Func<TKey1, TKey2, TValue> generator);
+
+        int NumberOfElements { get; }
     }
 }

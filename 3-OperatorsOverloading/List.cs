@@ -23,6 +23,11 @@ namespace OperatorsOverloading
             {
                 get { return false; }
             }
+
+            public override int Length
+            {
+                get { return 1 + this.Tail.Length; }
+            }
         }
 
         internal sealed class Empty<TList> : List<TList>
@@ -30,6 +35,10 @@ namespace OperatorsOverloading
             public override TList Head { get { return default(TList); } }
             public override List<TList> Tail { get { return null; } }
             public override bool IsNil { get { return true; } }
+            public override int Length
+            {
+                get { return 0; }
+            }
         }
 
         public abstract TValue Head { get; }
@@ -37,6 +46,8 @@ namespace OperatorsOverloading
         public abstract List<TValue> Tail { get; }
 
         public abstract bool IsNil { get; }
+
+        public abstract int Length { get; }
 
         public IEnumerable<List<TValue>> Flatten()
         {

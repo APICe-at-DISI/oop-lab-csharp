@@ -27,7 +27,7 @@ namespace Properties
         // TODO improve
         public IList<string> GetNames()
         {
-            return this.seeds.ToList();
+            return this.names.ToList();
         }
 
         // TODO improve

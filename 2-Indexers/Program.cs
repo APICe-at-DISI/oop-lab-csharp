@@ -30,12 +30,12 @@ namespace Indexer
 
             int[] seven = new int[] {7, 14, 21, 28, 35, 42, 49, 56, 63, 70};
 
-            if (pitagoricTable.GetRow(7).Select(t => t.Item2).SequenceEqual(seven))
+            if (!pitagoricTable.GetRow(7).Select(t => t.Item2).SequenceEqual(seven))
             {
                 throw new Exception("Wrong implementation");
             }
 
-            if (pitagoricTable.GetColumn(7).Select(t => t.Item2).SequenceEqual(seven))
+            if (!pitagoricTable.GetColumn(7).Select(t => t.Item2).SequenceEqual(seven))
             {
                 throw new Exception("Wrong implementation");
             }

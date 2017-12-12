@@ -39,6 +39,14 @@ namespace Indexer
             throw new NotImplementedException();
         }
 
+        public int NumberOfElements
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         public override string ToString()
         {
             return base.ToString();
