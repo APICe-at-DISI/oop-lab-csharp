@@ -18,40 +18,47 @@ namespace Properties {
         internal Card(Tuple<string, string, int> tuple)
             : this(tuple.Item1, tuple.Item2, tuple.Item3) { }
 
-        // TODO improve
-        public string GetSeed()
+        public String Seed
         {
-            return this.seed;
+            get { return seed; }
         }
 
-        // TODO improve
-        public string GetName()
+        public string Name
         {
-            return this.name;
+            get => name;
         }
 
-        // TODO improve
-        public int GetOrdinal()
-        {
-            return this.ordial;
-        }
+        public int Ordial => ordial;
+
 
         public override string ToString()
         {
             // TODO understand string interpolation
-            return $"{this.GetType().Name}(Name={this.GetName()}, Seed={this.GetSeed()}, Ordinal={this.GetOrdinal()})";
+            return $"{this.GetType().Name}(Name={this.Name}, Seed={this.Seed}, Ordinal={this.Ordial})";
+        }
+
+        protected bool Equals(Card other)
+        {
+            return string.Equals(seed, other.seed) && string.Equals(name, other.name) && ordial == other.ordial;
         }
 
         public override bool Equals(object obj)
         {
-            // TODO improve
-            return base.Equals(obj);
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((Card) obj);
         }
 
         public override int GetHashCode()
         {
-            // TODO improve
-            return base.GetHashCode();
+            unchecked
+            {
+                var hashCode = (seed != null ? seed.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (name != null ? name.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ ordial;
+                return hashCode;
+            }
         }
     }
 
