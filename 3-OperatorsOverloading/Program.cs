@@ -25,29 +25,30 @@ namespace OperatorsOverloading
             List<int> lst2 = lst;
             lst2 += List.From(4, 3);
 
-            if (lst2 != lst1)
+            if (lst2.Tail.Tail != lst1)
             {
                 throw new Exception("Wrong implementation");
             }
 
-            List<int> lst3 = lst;
+            List<int> lst3 = lst2;
             lst3 -= 5;
 
-            if (lst3 != (List<int>)res2)
+            if (lst3.Tail.Tail != (List<int>)res2)
             {
                 throw new Exception("Wrong implementation");
             }
 
-            if (lst3 >= lst1)
+            if (lst3 <= lst1)
             {
                 throw new Exception("Wrong implementation");
             }
 
-            if (lst1 <= lst2)
+            if (lst1 >= lst2)
             {
                 throw new Exception("Wrong implementation");
             }
 
+            Console.WriteLine("Ok");
             Console.ReadLine();
         }
     }

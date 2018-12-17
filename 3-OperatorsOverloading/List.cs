@@ -58,6 +58,11 @@ namespace OperatorsOverloading
             }
         }
 
+        public IEnumerable<TValue> ToFlat()
+        {
+            return Flatten().Select(ht => ht.Head);
+        }
+
         public override string ToString()
         {
             return "[ " + string.Join(", ", this.Flatten()
@@ -66,57 +71,67 @@ namespace OperatorsOverloading
 
         public static bool operator ==(List<TValue> list1, List<TValue> list2)
         {
-            throw new NotImplementedException();
+            if (ReferenceEquals(list1, null)|| ReferenceEquals(list2, null))
+            {
+                return list1 == list2;
+            } 
+            return Enumerable.SequenceEqual(
+                list1.ToFlat(),
+                list2.ToFlat()
+            );
         }
 
         public static bool operator !=(List<TValue> list1, List<TValue> list2)
         {
-            throw new NotImplementedException();
+            return !(list1 == list2);
         }
 
         public static bool operator >=(List<TValue> list1, List<TValue> list2)
         {
-            throw new NotImplementedException();
+            return list1.Length >= list2.Length;
         }
 
         public static bool operator <=(List<TValue> list1, List<TValue> list2)
         {
-            throw new NotImplementedException();
+            return list1.Length <= list2.Length;
         }
 
         public static bool operator <(List<TValue> list1, List<TValue> list2)
         {
-            throw new NotImplementedException();
+            return list1.Length < list2.Length;
         }
 
         public static bool operator >(List<TValue> list1, List<TValue> list2)
         {
-            throw new NotImplementedException();
+            return list1.Length > list2.Length;
         }
 
         public static List<TValue> operator +(List<TValue> list1, List<TValue> list2)
         {
-            throw new NotImplementedException();
+            return List.Append(list1, list2);
         }
 
         public static List<TValue> operator -(List<TValue> list1, List<TValue> list2)
         {
-            throw new NotImplementedException();
+            var second = list2.ToFlat().ToList();
+            return List.From(
+                list1.ToFlat().Where(x => !second.Contains(x))
+            );
         }
 
         public static implicit operator List<TValue>(TValue[] enumerable)
         {
-            throw new NotImplementedException();
+            return List.From(enumerable as IEnumerable<TValue>);
         }
 
         public static implicit operator List<TValue>(TValue element)
         {
-            throw new NotImplementedException();
+            return List.Of(element);
         }
 
-        public static explicit operator TValue[] (List<TValue> enumerable)
+        public static explicit operator TValue[] (List<TValue> list)
         {
-            throw new NotImplementedException();
+            return list.ToFlat().ToArray();
         }
     }
 
