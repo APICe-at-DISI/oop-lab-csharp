@@ -8,58 +8,86 @@ namespace Indexer
 {
     public class Map2D<TKey1, TKey2, TValue> : IMap2D<TKey1, TKey2, TValue>
     {
-        public bool Equals(IMap2D<TKey1, TKey2, TValue> other)
-        {
-            throw new NotImplementedException();
-        }
+
+        private readonly Dictionary<Tuple<TKey1, TKey2>, TValue> data = new Dictionary<Tuple<TKey1, TKey2>, TValue>();
+       
 
         public TValue this[TKey1 key1, TKey2 key2]
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get { return data[Tuple.Create(key1, key2)]; }
+            set { data[Tuple.Create(key1, key2)] = value; }
         }
 
         public IList<Tuple<TKey2, TValue>> GetRow(TKey1 key1)
         {
-            throw new NotImplementedException();
+            return data.Keys
+                .Where(k1k2 => k1k2.Item1.Equals(key1))
+                .Select(k1k2 => Tuple.Create(k1k2.Item2, data[k1k2]))
+                .ToList();
         }
 
         public IList<Tuple<TKey1, TValue>> GetColumn(TKey2 key2)
         {
-            throw new NotImplementedException();
+            return data.Keys
+                .Where(k1k2 => k1k2.Item2.Equals(key2))
+                .Select(k1k2 => Tuple.Create(k1k2.Item1, data[k1k2]))
+                .ToList();
         }
 
         public IList<Tuple<TKey1, TKey2, TValue>> GetElements()
         {
-            throw new NotImplementedException();
+            return data.Keys
+                .Select(k1k2 => Tuple.Create(k1k2.Item1, k1k2.Item2, data[k1k2]))
+                .ToList();
         }
 
         public void Fill(IEnumerable<TKey1> keys1, IEnumerable<TKey2> keys2, Func<TKey1, TKey2, TValue> generator)
         {
-            throw new NotImplementedException();
-        }
-
-        public int NumberOfElements
-        {
-            get
+            var keys2Array = keys2.ToArray();
+            
+            foreach (var k1 in keys1)
             {
-                throw new NotImplementedException();
+                foreach (var k2 in keys2Array)
+                {
+                    this[k1, k2] = generator(k1, k2);
+                }
             }
         }
 
-        public override string ToString()
+        public int NumberOfElements => data.Count;
+
+        protected bool Equals(Map2D<TKey1, TKey2, TValue> other)
         {
-            return base.ToString();
+            return Equals(data, other.data);
+        }
+
+        public bool Equals(IMap2D<TKey1, TKey2, TValue> other)
+        {
+            if (other is Map2D<TKey1, TKey2, TValue> otherMap2d)
+            {
+                return Equals(otherMap2d);
+            }
+
+            return false;
         }
 
         public override bool Equals(object obj)
         {
-            return base.Equals(obj);
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((Map2D<TKey1, TKey2, TValue>) obj);
         }
 
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            return data != null ? data.GetHashCode() : 0;
+        }
+
+        public override string ToString()
+        {
+            return "{ " + String.Join(", ", this.GetElements()
+                       .Select(e => $"({e.Item1}, {e.Item2}) -> {e.Item3}")) + "}";
         }
     }
 }
