@@ -61,6 +61,9 @@ namespace DelegatesAndEvents
             {
                 throw new Exception("Wrong implementation");
             }
+            
+            Console.WriteLine("Ok");
+            Console.ReadLine();
         }
     }
 }

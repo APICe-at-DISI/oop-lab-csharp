@@ -1,102 +1,124 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DelegatesAndEvents {
 
     public class ObservableList<TItem> : IObservableList<TItem>
     {
-        public IEnumerator<TItem> GetEnumerator()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return this.GetEnumerator();
-        }
-
-        public void Add(TItem item)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Clear()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public bool Contains(TItem item)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void CopyTo(TItem[] array, int arrayIndex)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public bool Remove(TItem item)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public int Count
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public bool IsReadOnly
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-        public int IndexOf(TItem item)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Insert(int index, TItem item)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void RemoveAt(int index)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public TItem this[int index]
-        {
-            get { throw new System.NotImplementedException(); }
-            set { throw new System.NotImplementedException(); }
-        }
+        private readonly IList<TItem> elements = new List<TItem>();
 
         public event ListChangeCallback<TItem> ElementInserted;
         public event ListChangeCallback<TItem> ElementRemoved;
         public event ListElementChangeCallback<TItem> ElementChanged;
 
-        public override string ToString()
+        public IEnumerator<TItem> GetEnumerator()
         {
-            // TODO improve
-            return base.ToString();
+            return elements.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ((IEnumerable) elements).GetEnumerator();
+        }
+
+        public void Add(TItem item)
+        {
+            elements.Add(item);
+            ElementInserted?.Invoke(this, item, elements.Count - 1);
+        }
+
+        public void Clear()
+        {
+            var clone = new List<TItem>(elements);
+            elements.Clear();
+            for (int i = 0; i < clone.Count; i++)
+            {
+                ElementRemoved?.Invoke(this, elements[i], i);
+            }
+        }
+
+        public bool Contains(TItem item)
+        {
+            return elements.Contains(item);
+        }
+
+        public void CopyTo(TItem[] array, int arrayIndex)
+        {
+            elements.CopyTo(array, arrayIndex);
+        }
+
+        public bool Remove(TItem item)
+        {
+            var removedIndex = elements.IndexOf(item);
+            
+            if (removedIndex >= 0)
+            {
+                var removedItem = elements[removedIndex];
+                elements.RemoveAt(removedIndex);
+                ElementRemoved?.Invoke(this, removedItem, removedIndex);
+
+                return true;
+            }
+
+            return false;
+        }
+
+        public int Count => elements.Count;
+
+        public bool IsReadOnly => elements.IsReadOnly;
+
+        public int IndexOf(TItem item)
+        {
+            return elements.IndexOf(item);
+        }
+
+        public void Insert(int index, TItem item)
+        {
+            elements.Insert(index, item);
+            ElementInserted?.Invoke(this, item, index);
+        }
+
+        public void RemoveAt(int index)
+        {
+            var removedItem = elements[index];
+            elements.RemoveAt(index);
+            ElementRemoved?.Invoke(this, removedItem, index);
+        }
+
+        public TItem this[int index]
+        {
+            get => elements[index];
+            set
+            {
+                var old = elements[index];
+                elements[index] = value;
+                ElementChanged?.Invoke(this, value, old, index);
+            }
+        }
+
+        protected bool Equals(ObservableList<TItem> other)
+        {
+            return elements.Equals(other.elements);
         }
 
         public override bool Equals(object obj)
         {
-            // TODO improve
-            return base.Equals(obj);
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((ObservableList<TItem>) obj);
         }
 
         public override int GetHashCode()
         {
-            // TODO improve
-            return base.GetHashCode();
+            return elements.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return "[" + string.Join(", ", elements) + "]";
         }
     }
 
