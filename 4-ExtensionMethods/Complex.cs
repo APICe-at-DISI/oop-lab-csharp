@@ -4,8 +4,10 @@ namespace ExtensionMethods
 {
     internal class Complex : IComplex
     {
-        private double re;
-        private double im;
+        private const double TOLERANCE = 1E-7;
+        
+        private readonly double re;
+        private readonly double im;
 
         public Complex(double re, double im)
         {
@@ -15,55 +17,48 @@ namespace ExtensionMethods
 
         public bool Equals(IComplex other)
         {
-            throw new System.NotImplementedException();
+            return other != null && Math.Abs(Imaginary - other.Imaginary) < TOLERANCE && Math.Abs(Real - other.Real) < TOLERANCE;
         }
 
         public double Real
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
+            get { return re; }
         }
 
         public double Imaginary
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
+            get { return im; }
         }
         public double Modulus
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
+            get { return Math.Sqrt(re * re + im * im); }
         }
         public double Phase
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
+            get { return Math.Atan2(im, re); }
         }
 
         public override string ToString()
         {
-            // TODO improve
-            return base.ToString();
+            return $"{re} {(im >= 0 ? "+" : "-")} i{Math.Abs(im)}";
         }
 
         public override bool Equals(object obj)
         {
-            // TODO improve
-            return base.Equals(obj);
+            if (obj is IComplex)
+            {
+                return Equals(obj as IComplex);
+            }
+
+            return false;
         }
 
         public override int GetHashCode()
         {
-            // TODO improve
-            return base.GetHashCode();
+            var hashCode = 0;
+            hashCode = (hashCode * 397) ^ re.GetHashCode();
+            hashCode = (hashCode * 397) ^ im.GetHashCode();
+            return hashCode;
         }
 
     }

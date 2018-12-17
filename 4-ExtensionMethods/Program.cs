@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExtensionMethods
 {
@@ -43,6 +39,8 @@ namespace ExtensionMethods
             {
                 throw new Exception("Wrong implementation");
             }
+            
+            Console.WriteLine("Ok");
         }
     }
 }
