@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E5DA6887-65A5-4D69-BA3E-9E3AF48F4C3F}</ProjectGuid>
+    <ProjectGuid>{C7B4BC1A-856E-417E-A869-9A5D6A546E87}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Properties</RootNamespace>
-    <AssemblyName>Properties</AssemblyName>
+    <RootNamespace>ExtensionMethods</RootNamespace>
+    <AssemblyName>ExtensionMethods</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,8 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Person.cs" />
-    <Compile Include="MainProperties.cs" />
+    <Compile Include="Complex.cs" />
+    <Compile Include="MainExtensionMethodsExample.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
