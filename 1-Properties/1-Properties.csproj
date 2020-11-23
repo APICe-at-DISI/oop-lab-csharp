@@ -14,6 +14,7 @@
     <Nullable>disable</Nullable>
     <LangVersion>8</LangVersion>
     <OutputType>Exe</OutputType>
+    <StartupObject>Properties.Program</StartupObject>
   </PropertyGroup>
 
 </Project>

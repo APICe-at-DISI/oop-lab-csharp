@@ -13,6 +13,8 @@
     <NeutralLanguage>en</NeutralLanguage>
     <Nullable>disable</Nullable>
     <LangVersion>8</LangVersion>
+    <OutputType>Exe</OutputType>
+    <StartupObject>OperatorsOverloading.Program</StartupObject>
   </PropertyGroup>
 
 </Project>
