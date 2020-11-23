@@ -17,9 +17,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6-Iterators", "6-Iterators\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AFC6425F-4087-4ED7-BC7D-23F8838C6E6B}"
 	ProjectSection(SolutionItems) = preProject
-		oop1718_csharptutorial.pdf = oop1718_csharptutorial.pdf
-		oop1718_csharptutorial.pptx = oop1718_csharptutorial.pptx
 		README.md = README.md
+		csharp-lecture.pdf = csharp-lecture.pdf
+		csharp-lecture.pptx = csharp-lecture.pptx
 	EndProjectSection
 EndProject
 Global
