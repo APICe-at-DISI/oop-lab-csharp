@@ -133,7 +133,7 @@ namespace Iterators {
 
         public static IEnumerable<int> Integers(int start)
         {
-            int i = 0;
+            int i = start;
 
             while (true)
             {
@@ -143,7 +143,7 @@ namespace Iterators {
 
         public static IEnumerable<int> Integers() => Integers(0);
 
-        public static IEnumerable<int> Range(int start, int count) => Integers().TakeSome(count);
+        public static IEnumerable<int> Range(int start, int count) => Integers(start).TakeSome(count);
     }
 
 }
