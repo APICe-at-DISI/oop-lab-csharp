@@ -11,15 +11,9 @@ namespace DelegatesAndEvents {
         public event ListChangeCallback<TItem> ElementRemoved;
         public event ListElementChangeCallback<TItem> ElementChanged;
 
-        public IEnumerator<TItem> GetEnumerator()
-        {
-            return elements.GetEnumerator();
-        }
+        public IEnumerator<TItem> GetEnumerator() => elements.GetEnumerator();
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return ((IEnumerable) elements).GetEnumerator();
-        }
+        IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable)elements).GetEnumerator();
 
         public void Add(TItem item)
         {
@@ -33,19 +27,13 @@ namespace DelegatesAndEvents {
             elements.Clear();
             for (int i = 0; i < clone.Count; i++)
             {
-                ElementRemoved?.Invoke(this, elements[i], i);
+                ElementRemoved?.Invoke(this, clone[i], i);
             }
         }
 
-        public bool Contains(TItem item)
-        {
-            return elements.Contains(item);
-        }
+        public bool Contains(TItem item) => elements.Contains(item);
 
-        public void CopyTo(TItem[] array, int arrayIndex)
-        {
-            elements.CopyTo(array, arrayIndex);
-        }
+        public void CopyTo(TItem[] array, int arrayIndex) => elements.CopyTo(array, arrayIndex);
 
         public bool Remove(TItem item)
         {
@@ -67,10 +55,7 @@ namespace DelegatesAndEvents {
 
         public bool IsReadOnly => elements.IsReadOnly;
 
-        public int IndexOf(TItem item)
-        {
-            return elements.IndexOf(item);
-        }
+        public int IndexOf(TItem item) => elements.IndexOf(item);
 
         public void Insert(int index, TItem item)
         {
@@ -109,10 +94,7 @@ namespace DelegatesAndEvents {
             return Equals((ObservableList<TItem>) obj);
         }
 
-        public override int GetHashCode()
-        {
-            return elements.GetHashCode();
-        }
+        public override int GetHashCode() => elements.GetHashCode();
 
         public override string ToString()
         {
