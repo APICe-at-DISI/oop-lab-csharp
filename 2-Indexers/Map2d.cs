@@ -71,10 +71,19 @@ namespace Indexer
 
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((Map2D<TKey1, TKey2, TValue>) obj);
+            if (obj is null)
+            {
+                return false;
+            }
+            if (obj == this)
+            {
+                return true;
+            }
+            if (obj.GetType() != this.GetType())
+            {
+                return false;
+            }
+            return Equals(obj as Map2D<TKey1, TKey2, TValue>);
         }
 
         public override int GetHashCode()
@@ -84,7 +93,7 @@ namespace Indexer
 
         public override string ToString()
         {
-            return "{ " + String.Join(", ", this.GetElements()
+            return "{ " + string.Join(", ", this.GetElements()
                        .Select(e => $"({e.Item1}, {e.Item2}) -> {e.Item3}")) + "}";
         }
     }
