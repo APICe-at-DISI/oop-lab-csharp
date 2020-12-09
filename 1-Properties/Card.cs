@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Properties {
 
@@ -44,10 +44,19 @@ namespace Properties {
 
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((Card) obj);
+            if (obj is null)
+            {
+                return false;
+            }
+            if (this == obj)
+            {
+                return true;
+            }
+            if (obj.GetType() != this.GetType())
+            {
+                return false;
+            }
+            return Equals(obj as Card);
         }
 
         public override int GetHashCode()
