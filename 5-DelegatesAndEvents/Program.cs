@@ -8,13 +8,12 @@ namespace DelegatesAndEvents
         static void Main(string[] args)
         {
             bool c1, c2, c3;
-            IObservableList<int> list = new ObservableList<int>() {
-                1, 2, 3
-            };
+            IObservableList<int> list = new ObservableList<int>() { 1, 2, 3 };
 
             c1 = c2 = c3 = false;
 
-            list.ElementInserted += (lst, value, index) => {
+            list.ElementInserted += (lst, value, index) =>
+            {
                 if (lst == list && value == 4 && index == 3)
                 {
                     c1 = true;
@@ -27,7 +26,8 @@ namespace DelegatesAndEvents
 
             list.Add(4);
 
-            list.ElementRemoved += (lst, value, index) => {
+            list.ElementRemoved += (lst, value, index) =>
+            {
                 if (lst == list && value == 2 && index == 1)
                 {
                     c2 = true;
@@ -40,7 +40,8 @@ namespace DelegatesAndEvents
 
             list.Remove(2);
 
-            list.ElementChanged += (lst, value, oldValue, index) => {
+            list.ElementChanged += (lst, value, oldValue, index) =>
+            {
                 if (lst == list && value == 6 && oldValue == 1 && index == 0)
                 {
                     c3 = true;
