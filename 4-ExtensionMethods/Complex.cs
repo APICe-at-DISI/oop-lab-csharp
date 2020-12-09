@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace ExtensionMethods
 {
@@ -20,28 +20,15 @@ namespace ExtensionMethods
             return other != null && Math.Abs(Imaginary - other.Imaginary) < TOLERANCE && Math.Abs(Real - other.Real) < TOLERANCE;
         }
 
-        public double Real
-        {
-            get { return re; }
-        }
+        public double Real => re;
 
-        public double Imaginary
-        {
-            get { return im; }
-        }
-        public double Modulus
-        {
-            get { return Math.Sqrt(re * re + im * im); }
-        }
-        public double Phase
-        {
-            get { return Math.Atan2(im, re); }
-        }
+        public double Imaginary => im;
 
-        public override string ToString()
-        {
-            return $"{re} {(im >= 0 ? "+" : "-")} i{Math.Abs(im)}";
-        }
+        public double Modulus => Math.Sqrt(re * re + im * im);
+
+        public double Phase => Math.Atan2(im, re);
+
+        public override string ToString() => $"{re} {(im >= 0 ? "+" : "-")} i{Math.Abs(im)}";
 
         public override bool Equals(object obj)
         {
