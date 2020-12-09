@@ -10,10 +10,10 @@ namespace Indexer
             IMap2D<int, int, int> pitagoricTable = new Map2D<int, int, int>();
 
             pitagoricTable.Fill(
-                    Enumerable.Range(1, 10),
-                    Enumerable.Range(1, 10),
-                    (i, j) => i * j
-                );
+                Enumerable.Range(1, 10),
+                Enumerable.Range(1, 10),
+                (i, j) => i * j
+            );
 
             Console.WriteLine(pitagoricTable);
 
