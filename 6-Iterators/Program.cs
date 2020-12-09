@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Iterators
@@ -20,14 +20,18 @@ namespace Iterators
                 }
             }
 
-            IDictionary<int, int> occurrences = numbers.Map(optN => {
+            IDictionary<int, int> occurrences = numbers
+                .Map(optN =>
+                {
                     Console.Write(optN.ToString() + ",");
                     return optN;
-                }).SkipSome(1)
+                })
+                .SkipSome(1)
                 .TakeSome(len - 2)
                 .Filter(optN => optN.HasValue)
                 .Map(optN => optN.Value)
-                .Reduce(new Dictionary<int, int>(), (d, n) => {
+                .Reduce(new Dictionary<int, int>(), (d, n) =>
+                {
                     if (!d.ContainsKey(n))
                     {
                         d[n] = 1;

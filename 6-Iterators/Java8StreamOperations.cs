@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Iterators {
 
@@ -142,15 +141,9 @@ namespace Iterators {
             }
         }
 
-        public static IEnumerable<int> Integers()
-        {
-            return Integers(0);
-        }
+        public static IEnumerable<int> Integers() => Integers(0);
 
-        public static IEnumerable<int> Range(int start, int count)
-        {
-            return Integers().TakeSome(count);
-        }
+        public static IEnumerable<int> Range(int start, int count) => Integers().TakeSome(count);
     }
 
 }
