@@ -30,13 +30,13 @@ La comprensione di questi aspetti del linguaggio è auspicabile.
 ## Esercizio 2 - Indicizzatori & generici
 
 Il progetto `Indexers` consiste in una semplice libreria che fornisce l'astrazione di mappa bidimensionale (cioè mappa con due chiavi). 
-Il progetto fornisce l'interfaccia `IMap2D<TKey1, TKey2, TValue>`, che mostra i metodi forniti da una mappa bi-dimensionale, e la classe `Program` che rappresenta il punto d'ingresso del programma di test.
+Il progetto fornisce l'interfaccia `IMap2D<TKey1, TKey2, TValue>`, che mostra i metodi forniti da una mappa bi-dimensionale.
 Le implementazioni dell'interfaccia `IMap2D` permettono di memorizzare valori di tipo `TValue` in quella che può essere pensata come una matrice sparsa, in cui le righe sono indicizzare con valori di tipo `TKey1` e le colonne con valori di tipo `TKey2`.
 Dato un oggetto `IMap<TKey1, TKey2, TValue> map` e due chiavi `k1` di tipo `TKey1` e `k2` di tipo `TKey2`, si accede al valore corrispondente con la sintassi `map[k1, k2]`.
 
 Scopo dell'esercizio è implementare la classe `Map2D<TKey1, TKey2, TValue>`.
-Il test contenuto nella classe `Program` tenta di chiarire il comportamento atteso per una classe che implementi `IMap2D`.
-Esso lancia eccezioni nel caso di errata implementazione della classe `Map2D`.
+Il test contenuto nel progetto `2-IndexersTests` tenta di chiarire il comportamento atteso per una classe che implementi `IMap2D`.
+L'esercizio si può considerare concluso quando tutti i test terminano con successo.
 
 
 ## Esercizio 3 - Overloading degli operatori
@@ -86,7 +86,8 @@ Gli scopi dell'esercizio sono:
 
 - Implementare le operazioni sui numeri complessi, le cui firme sono presenti nella classe statica nella classe `ComplexExtensions`
 
-Il test contenuto nella classe `Program` tenta di chiarire il comportamento atteso per i metodi estensione suddetti.
+Il test contenuto nel progetto `4-ExtensionMethodsTest` tenta di chiarire il comportamento atteso per i metodi estensione suddetti.
+L'esercizio si può considerare concluso quando tutti i test terminano con successo.
 
 ## Esercizio 5 - Delegati ed eventi
 
