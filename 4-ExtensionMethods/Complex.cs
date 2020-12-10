@@ -2,7 +2,7 @@ using System;
 
 namespace ExtensionMethods
 {
-    internal class Complex : IComplex
+    public class Complex : IComplex
     {
         private const double TOLERANCE = 1E-7;
         
