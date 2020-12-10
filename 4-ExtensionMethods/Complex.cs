@@ -2,7 +2,7 @@
 
 namespace ExtensionMethods
 {
-    internal class Complex : IComplex
+    public class Complex : IComplex
     {
         private double re;
         private double im;
