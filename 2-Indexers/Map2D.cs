@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Indexer
+namespace Indexers
 {
     public class Map2D<TKey1, TKey2, TValue> : IMap2D<TKey1, TKey2, TValue>
     {

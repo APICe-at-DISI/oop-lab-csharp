@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Indexer
+namespace Indexers
 {
     public interface IMap2D<TKey1, TKey2, TValue> : IEquatable<IMap2D<TKey1, TKey2, TValue>>
     {

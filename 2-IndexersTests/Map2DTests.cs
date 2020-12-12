@@ -1,7 +1,7 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Indexer.Tests
+namespace Indexers
 {
     [TestClass]
     public class Map2DTests

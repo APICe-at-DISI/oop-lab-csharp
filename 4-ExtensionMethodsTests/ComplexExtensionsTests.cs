@@ -1,7 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ExtensionMethods;
 
-namespace ExtensionMethods.Tests
+namespace ExtensionMethods
 {
     [TestClass]
     public class ComplexExtensionsTests
