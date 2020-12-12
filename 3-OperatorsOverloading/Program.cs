@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace OperatorsOverloading
 {
-
+    /// <summary>
+    /// The runnable entrypoint of the exercise.
+    /// </summary>
     class Program
     {
         static void Main(string[] args)

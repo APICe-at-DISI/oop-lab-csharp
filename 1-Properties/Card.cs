@@ -2,12 +2,21 @@
 
 namespace Properties {
 
+    /// <summary>
+    /// The class models a card.
+    /// </summary>
     public class Card
     {
         private readonly string seed;
         private readonly string name;
         private readonly int ordial;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Card"/> class.
+        /// </summary>
+        /// <param name="name">the name of the card.</param>
+        /// <param name="seed">the seed of the card.</param>
+        /// <param name="ordial">the ordinal number of the card.</param>
         public Card(string name, string seed, int ordial)
         {
             this.name = name;
@@ -15,8 +24,14 @@ namespace Properties {
             this.seed = seed;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Card"/> class.
+        /// </summary>
+        /// <param name="tuple">the informations about the card as a tuple.</param>
         internal Card(Tuple<string, string, int> tuple)
-            : this(tuple.Item1, tuple.Item2, tuple.Item3) { }
+            : this(tuple.Item1, tuple.Item2, tuple.Item3)
+        {
+        }
 
         // TODO improve
         public string GetSeed()
@@ -36,23 +51,16 @@ namespace Properties {
             return this.ordial;
         }
 
+        /// <inheritdoc cref="object.ToString"/>
         public override string ToString()
         {
             // TODO understand string interpolation
             return $"{this.GetType().Name}(Name={this.GetName()}, Seed={this.GetSeed()}, Ordinal={this.GetOrdinal()})";
         }
 
-        public override bool Equals(object obj)
-        {
-            // TODO improve
-            return base.Equals(obj);
-        }
+        // TODO generate Equals(object obj)
 
-        public override int GetHashCode()
-        {
-            // TODO improve
-            return base.GetHashCode();
-        }
+        // TODO generate GetHashCode()
     }
 
 }

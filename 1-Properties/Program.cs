@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Properties
 {
-
+    /// <summary>
+    /// The seeds of italian cards.
+    /// </summary>
     enum ItalianSeeds
     {
         DENARI,
@@ -15,7 +17,9 @@ namespace Properties
         BASTONI
     }
 
-
+    /// <summary>
+    /// The names of italian cards.
+    /// </summary>
     enum ItalianNames
     {
         ASSO,
@@ -30,6 +34,9 @@ namespace Properties
         RE
     }
 
+    /// <summary>
+    /// The runnable entrypoint of the exercise.
+    /// </summary>
     class Program
     {
         static void Main(string[] args)

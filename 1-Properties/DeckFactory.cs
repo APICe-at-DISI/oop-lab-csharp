@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Properties
 {
+    /// <summary>
+    /// A factory class for building <see cref="ISet{T}">decks</see> of <see cref="Card"/>s.
+    /// </summary>
     public class DeckFactory
     {
         private string[] seeds;
@@ -36,11 +39,13 @@ namespace Properties
             this.names = names.ToArray();
         }
 
+        // TODO improve
         public int GetDeckSize()
         {
             return this.names.Length * this.seeds.Length;
         }
 
+        /// TODO improve
         public ISet<Card> GetDeck()
         {
             if (this.names == null || this.seeds == null)
