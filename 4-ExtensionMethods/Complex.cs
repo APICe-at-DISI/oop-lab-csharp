@@ -1,7 +1,7 @@
-﻿using System;
-
 namespace ExtensionMethods
 {
+    using System;
+
     /// <inheritdoc cref="IComplex"/>
     public class Complex : IComplex
     {

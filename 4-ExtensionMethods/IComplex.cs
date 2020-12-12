@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace ExtensionMethods
 {
+    using System;
+
     /// <summary>
     /// The interface models a <a href="https://en.wikipedia.org/wiki/Complex_number">complex number</a>.
     /// </summary>

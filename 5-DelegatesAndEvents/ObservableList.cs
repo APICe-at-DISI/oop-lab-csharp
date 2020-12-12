@@ -1,8 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-
-namespace DelegatesAndEvents {
+namespace DelegatesAndEvents
+{
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
 
     /// <inheritdoc cref="IObservableList{T}" />
     public class ObservableList<TItem> : IObservableList<TItem>
@@ -15,6 +15,31 @@ namespace DelegatesAndEvents {
 
         /// <inheritdoc cref="IObservableList{T}.ElementChanged" />
         public event ListElementChangeCallback<TItem> ElementChanged;
+
+        /// <inheritdoc cref="ICollection{T}.Count" />
+        public int Count
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        /// <inheritdoc cref="ICollection{T}.IsReadOnly" />
+        public bool IsReadOnly
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        /// <inheritdoc cref="IList{T}.this" />
+        public TItem this[int index]
+        {
+            get { throw new System.NotImplementedException(); }
+            set { throw new System.NotImplementedException(); }
+        }
 
         /// <inheritdoc cref="IEnumerable{T}.GetEnumerator" />
         public IEnumerator<TItem> GetEnumerator()
@@ -58,24 +83,6 @@ namespace DelegatesAndEvents {
             throw new System.NotImplementedException();
         }
 
-        /// <inheritdoc cref="ICollection{T}.Count" />
-        public int Count
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        /// <inheritdoc cref="ICollection{T}.IsReadOnly" />
-        public bool IsReadOnly
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
         /// <inheritdoc cref="IList{T}.IndexOf" />
         public int IndexOf(TItem item)
         {
@@ -92,13 +99,6 @@ namespace DelegatesAndEvents {
         public void RemoveAt(int index)
         {
             throw new System.NotImplementedException();
-        }
-
-        /// <inheritdoc cref="IList{T}.this" />
-        public TItem this[int index]
-        {
-            get { throw new System.NotImplementedException(); }
-            set { throw new System.NotImplementedException(); }
         }
 
         /// <inheritdoc cref="object.Equals(object?)" />

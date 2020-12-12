@@ -11,7 +11,7 @@
     <RootNamespace>Iterators</RootNamespace>
     <AssemblyName>Iterators</AssemblyName>
     <NeutralLanguage>en</NeutralLanguage>
-    <Nullable>annotations</Nullable>
+    <Nullable>disable</Nullable>
     <LangVersion>8</LangVersion>
     <OutputType>Exe</OutputType>
     <StartupObject>Iterators.Program</StartupObject>

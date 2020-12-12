@@ -11,7 +11,7 @@
     <RootNamespace>Properties</RootNamespace>
     <AssemblyName>Properties</AssemblyName>
     <NeutralLanguage>en</NeutralLanguage>
-    <Nullable>annotations</Nullable>
+    <Nullable>disable</Nullable>
     <LangVersion>8</LangVersion>
     <OutputType>Exe</OutputType>
     <StartupObject>Properties.Program</StartupObject>

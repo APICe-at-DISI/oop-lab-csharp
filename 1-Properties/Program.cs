@@ -1,26 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Properties
 {
+    using System;
+    using System.Linq;
+
     /// <summary>
     /// The seeds of italian cards.
     /// </summary>
-    enum ItalianSeeds
+    public enum ItalianSeeds
     {
         DENARI,
         COPPE,
         SPADE,
-        BASTONI
+        BASTONI,
     }
 
     /// <summary>
     /// The names of italian cards.
     /// </summary>
-    enum ItalianNames
+    public enum ItalianNames
     {
         ASSO,
         DUE,
@@ -31,30 +28,29 @@ namespace Properties
         SETTE,
         FANTE,
         CAVALLO,
-        RE
+        RE,
     }
 
     /// <summary>
     /// The runnable entrypoint of the exercise.
     /// </summary>
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        /// <inheritdoc cref="Program" />
+        public static void Main()
         {
             DeckFactory df = new DeckFactory();
 
             df.SetNames(Enum.GetNames(typeof(ItalianNames)).ToList());
             df.SetSeeds(Enum.GetNames(typeof(ItalianSeeds)).ToList());
 
-            // TODO understant string format convention
+            // TODO understand string format convention
             Console.WriteLine("The {1} deck has {0} cards: ", df.GetDeckSize(), "italian");
 
             foreach (Card c in df.GetDeck())
             {
                 Console.WriteLine(c);
             }
-
-            Console.ReadLine();
         }
     }
 }

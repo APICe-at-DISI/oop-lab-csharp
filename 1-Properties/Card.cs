@@ -1,6 +1,6 @@
-﻿using System;
-
-namespace Properties {
+namespace Properties
+{
+    using System;
 
     /// <summary>
     /// The class models a card.
@@ -9,18 +9,18 @@ namespace Properties {
     {
         private readonly string seed;
         private readonly string name;
-        private readonly int ordial;
+        private readonly int ordinal;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Card"/> class.
         /// </summary>
         /// <param name="name">the name of the card.</param>
         /// <param name="seed">the seed of the card.</param>
-        /// <param name="ordial">the ordinal number of the card.</param>
-        public Card(string name, string seed, int ordial)
+        /// <param name="ordinal">the ordinal number of the card.</param>
+        public Card(string name, string seed, int ordinal)
         {
             this.name = name;
-            this.ordial = ordial;
+            this.ordinal = ordinal;
             this.seed = seed;
         }
 
@@ -48,7 +48,7 @@ namespace Properties {
         // TODO improve
         public int GetOrdinal()
         {
-            return this.ordial;
+            return this.ordinal;
         }
 
         /// <inheritdoc cref="object.ToString"/>
@@ -62,5 +62,4 @@ namespace Properties {
 
         // TODO generate GetHashCode()
     }
-
 }

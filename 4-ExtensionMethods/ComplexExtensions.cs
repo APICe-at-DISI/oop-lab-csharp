@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 
-namespace ExtensionMethods {
-
+namespace ExtensionMethods
+{
     /// <summary>
     /// The static class declares extension methods for complex numbers.
     /// </summary>
@@ -41,22 +41,27 @@ namespace ExtensionMethods {
         }
 
         /// <summary>
-        /// Multiply a complex number with a scalar.
+        /// Divide two complex numbers.
         /// </summary>
-        /// <param name="c1">the complex operand.</param>
-        /// <param name="scalar">the scalar operand.</param>
-        /// <returns>the product.</returns>
+        /// <param name="c1">the first operand.</param>
+        /// <param name="c2">the second operand.</param>
+        /// <returns>the quotient.</returns>
         public static IComplex Divide(this IComplex c1, IComplex c2)
         {
             throw new NotImplementedException();
         }
 
         /// <summary>
-        /// Divide a complex number with a scalar.
+        /// Get the complex conjugate of a complex number.
         /// </summary>
+        /// <remarks>
+        /// <para>
+        /// The complex conjugate of a complex number is the number with an equal real part
+        /// and an imaginary part equal in magnitude, but opposite in sign.
+        /// </para>
+        /// </remarks>
         /// <param name="c1">the complex operand.</param>
-        /// <param name="scalar">the scalar operand.</param>
-        /// <returns>the quotient.</returns>
+        /// <returns>the complex conjugate.</returns>
         public static IComplex Conjugate(this IComplex c1)
         {
             throw new NotImplementedException();

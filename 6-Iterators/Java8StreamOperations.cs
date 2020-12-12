@@ -1,7 +1,7 @@
-using System;
-using System.Collections.Generic;
-
-namespace Iterators {
+namespace Iterators
+{
+    using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// The static class declares extension methods which use the same naming used by Java 8 with Stream API.
@@ -156,10 +156,7 @@ namespace Iterators {
         /// Returns an infinite sequence of integers starting from <c>0</c>.
         /// </summary>
         /// <returns>an infinite sequence of integers.</returns>
-        public static IEnumerable<int> Integers()
-        {
-            return Integers(0);
-        }
+        public static IEnumerable<int> Integers() => Integers(0);
 
         /// <summary>
         /// Returns a sequence of <paramref name="count"/> integers starting <paramref name="start"/>.
@@ -167,9 +164,6 @@ namespace Iterators {
         /// <param name="start">the starting element.</param>
         /// <param name="count">the number of items of the sequence.</param>
         /// <returns>the sequence of integers.</returns>
-        public static IEnumerable<int> Range(int start, int count)
-        {
-            return Integers(start).TakeSome(count);
-        }
+        public static IEnumerable<int> Range(int start, int count) => Integers(start).TakeSome(count);
     }
 }

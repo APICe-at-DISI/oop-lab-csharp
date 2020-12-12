@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Properties
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// A factory class for building <see cref="ISet{T}">decks</see> of <see cref="Card"/>s.
     /// </summary>
@@ -52,12 +50,16 @@ namespace Properties
             {
                 throw new InvalidOperationException();
             }
-            return new HashSet<Card>(Enumerable.Range(0, this.names.Length)
-                .SelectMany(i => Enumerable.Repeat(i, this.seeds.Length)
-                    .Zip(Enumerable.Range(0, this.seeds.Length), (n, s) => Tuple.Create(this.names[n], this.seeds[s], n))
-                ).Select(tuple => new Card(tuple))
+
+            return new HashSet<Card>(Enumerable
+                .Range(0, this.names.Length)
+                .SelectMany(i => Enumerable
+                    .Repeat(i, this.seeds.Length)
+                    .Zip(
+                        Enumerable.Range(0, this.seeds.Length),
+                        (n, s) => Tuple.Create(this.names[n], this.seeds[s], n)))
+                .Select(tuple => new Card(tuple))
                 .ToList());
         }
     }
-
 }

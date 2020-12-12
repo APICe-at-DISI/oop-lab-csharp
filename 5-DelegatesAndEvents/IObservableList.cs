@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace DelegatesAndEvents
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// Event handler for list changes in <see cref="IObservableList{TItem}"/>.
     /// </summary>

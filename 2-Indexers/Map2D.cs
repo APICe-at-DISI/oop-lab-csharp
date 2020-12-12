@@ -1,14 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Indexers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Linq;
+
     /// <inheritdoc cref="IMap2D{TKey1,TKey2,TValue}" />
     public class Map2D<TKey1, TKey2, TValue> : IMap2D<TKey1, TKey2, TValue>
     {
+        /// <inheritdoc cref="IMap2D{TKey1, TKey2, TValue}.NumberOfElements" />
+        public int NumberOfElements
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         /// <inheritdoc cref="IMap2D{TKey1, TKey2, TValue}.this" />
         public TValue this[TKey1 key1, TKey2 key2]
         {
@@ -40,20 +48,11 @@ namespace Indexers
             throw new NotImplementedException();
         }
 
-        /// <inheritdoc cref="IMap2D{TKey1, TKey2, TValue}.NumberOfElements" />
-        public int NumberOfElements
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        /// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
+        /// <inheritdoc cref="IEquatable{T}.Equals(T)" />
         public bool Equals(IMap2D<TKey1, TKey2, TValue> other)
         {
             // TODO: improve
-            throw new NotImplementedException();
+            return base.Equals(other);
         }
 
         /// <inheritdoc cref="object.Equals(object?)" />
@@ -73,6 +72,7 @@ namespace Indexers
         /// <inheritdoc cref="IMap2D{TKey1, TKey2, TValue}.ToString"/>
         public override string ToString()
         {
+            // TODO: improve
             return base.ToString();
         }
     }
