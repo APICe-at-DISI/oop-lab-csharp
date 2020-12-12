@@ -11,7 +11,7 @@
     <RootNamespace>DelegatesAndEvents</RootNamespace>
     <AssemblyName>DelegatesAndEvents</AssemblyName>
     <NeutralLanguage>en</NeutralLanguage>
-    <Nullable>disable</Nullable>
+    <Nullable>annotations</Nullable>
     <LangVersion>8</LangVersion>
     <OutputType>Exe</OutputType>
     <StartupObject>DelegatesAndEvents.Program</StartupObject>
