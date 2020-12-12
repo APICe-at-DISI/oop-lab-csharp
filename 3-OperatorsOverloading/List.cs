@@ -11,24 +11,6 @@ namespace OperatorsOverloading
     /// <typeparam name="TValue">the type of the items of the list.</typeparam>
     public abstract class List<TValue>
     {
-        /// <inheritdoc cref="IEquatable{T}.Equals(T)" />
-        public bool Equals(List<TValue> other)
-        {
-            return this == other;
-        }
-
-        /// <inheritdoc cref="object.Equals(object?)" />
-        public override bool Equals(object obj)
-        {
-            return obj is List<TValue> list && this == list;
-        }
-
-        /// <inheritdoc cref="object.GetHashCode" />
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(this.Head, this.Tail, this.IsNil, this.Length);
-        }
-
         /// <summary>
         /// Gets the first element of the list, which is called "head" of the list.
         /// </summary>
@@ -50,7 +32,7 @@ namespace OperatorsOverloading
         public abstract int Length { get; }
 
         /// <summary>
-        /// Build a new list from the given array of elements.
+        /// Converts the given array into a new list implicitly.
         /// </summary>
         /// <param name="enumerable">the array of elements to put on the list.</param>
         /// <returns>a new list with the given elements.</returns>
@@ -58,14 +40,14 @@ namespace OperatorsOverloading
             List.From(enumerable as IEnumerable<TValue>);
 
         /// <summary>
-        /// Build a new list from the given element.
+        /// Converts the given element into a new list implicitly.
         /// </summary>
         /// <param name="element">the element to put on the list.</param>
         /// <returns>a new list with only the given element.</returns>
         public static implicit operator List<TValue>(TValue element) => List.Of(element);
 
         /// <summary>
-        /// Build a new array from the given list.
+        /// Converts the given list into a new array explicitly.
         /// </summary>
         /// <param name="list">the list to transform.</param>
         /// <returns>an array containing the elements of the list.</returns>
@@ -171,8 +153,7 @@ namespace OperatorsOverloading
         /// <returns>a list of lists.</returns>
         public IEnumerable<List<TValue>> Flatten()
         {
-            List<TValue> curr = this;
-            for (; !curr.IsNil; curr = curr.Tail)
+            for (var curr = this; !curr.IsNil; curr = curr.Tail)
             {
                 yield return curr;
             }
@@ -182,7 +163,26 @@ namespace OperatorsOverloading
         /// Flatten this list into an enumeration of each item.
         /// </summary>
         /// <returns>an enumeration of each item of this list.</returns>
-        public IEnumerable<TValue> ToFlat() => this.Flatten().Select(ht => ht.Head);
+        public IEnumerable<TValue> ToFlat() =>
+            this.Flatten().Select(ht => ht.Head);
+
+        /// <inheritdoc cref="IEquatable{T}.Equals(T)" />
+        public bool Equals(List<TValue> other)
+        {
+            return this == other;
+        }
+
+        /// <inheritdoc cref="object.Equals(object?)" />
+        public override bool Equals(object obj)
+        {
+            return obj is List<TValue> list && this == list;
+        }
+
+        /// <inheritdoc cref="object.GetHashCode" />
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(this.Head, this.Tail, this.IsNil, this.Length);
+        }
 
         /// <inheritdoc cref="object.ToString"/>
         public override string ToString() =>
@@ -204,10 +204,10 @@ namespace OperatorsOverloading
             }
 
             /// <inheritdoc cref="List{TValue}.IsNil"/>
-            public override bool IsNil { get => false; }
+            public override bool IsNil => false;
 
             /// <inheritdoc cref="List{TValue}.Length"/>
-            public override int Length { get => 1 + this.Tail.Length; }
+            public override int Length => 1 + this.Tail.Length;
         }
 
         /// <summary>
@@ -217,16 +217,16 @@ namespace OperatorsOverloading
         internal sealed class Empty<TList> : List<TList>
         {
             /// <inheritdoc cref="List{TValue}.Head"/>
-            public override TList Head { get => default; }
+            public override TList Head => default;
 
             /// <inheritdoc cref="List{TValue}.Tail"/>
-            public override List<TList> Tail { get => null; }
+            public override List<TList> Tail => null;
 
             /// <inheritdoc cref="List{TValue}.IsNil"/>
-            public override bool IsNil { get => true; }
+            public override bool IsNil => true;
 
             /// <inheritdoc cref="List{TValue}.Length"/>
-            public override int Length { get => 0; }
+            public override int Length => 0;
         }
     }
 
@@ -280,7 +280,7 @@ namespace OperatorsOverloading
         }
 
         /// <summary>
-        /// Build a new list from on or more elements.
+        /// Build a new list from one or more elements.
         /// </summary>
         /// <param name="item1">the first element to put on the list.</param>
         /// <param name="items">the other elements to put on the list, if any.</param>

@@ -23,7 +23,7 @@ Queste classi sono state scritte da un programmatore Java, non abituato a scrive
 
 Scopo dell'esercizio è "convertire" il codice dallo stile Java allo stile C-Sharp, ad esempio usando le proprietà e gli altri costrutti tipici del secondo linguaggio.
 
-Notare anche che nel codice vengono impiegate le stringhe formato (alcuni esempi qui: https://msdn.microsoft.com/it-it/library/system.string.format(v=vs.110).aspx) e l'interpolazione di stringhe (alcuni esempi: https://docs.microsoft.com/it-it/dotnet/csharp/language-reference/keywords/interpolated-strings).
+Notare anche che nel codice vengono impiegate sia le stringhe formato (alcuni esempi qui: https://msdn.microsoft.com/it-it/library/system.string.format(v=vs.110).aspx) che l'interpolazione di stringhe (alcuni esempi: https://docs.microsoft.com/it-it/dotnet/csharp/language-reference/keywords/interpolated-strings).
 La comprensione di questi aspetti del linguaggio è auspicabile.
 
 
@@ -92,7 +92,7 @@ L'esercizio si può considerare concluso quando tutti i test terminano con succe
 ## Esercizio 5 - Delegati ed eventi
 
 Il progetto `DelegatesAndEvent` consiste in una semplice libreria che fornisce l'astrazione di "lista osservabile".
-L'intefaccia `IObservableList` estende `IList` (interfaccia standard di .Net) con la capacità della lista di generare eventi ogni volta che subisce una modifica.
+L'intefaccia `IObservableList` estende `System.Collections.Generic.IList` con la capacità della lista di generare eventi ogni volta che subisce una modifica.
 
 L'esercizio fornisce già i delegati `ListChangeCallback` e `ListElementChangeCallback`.
 Il primo codifica la firma dei metodi che possono essere registrati per intercettare l'aggiunta/rimozione di elementi dalla lista.
@@ -105,9 +105,9 @@ Esso mostra inoltre come è possibile registrare ascoltatori di eventi per una s
 
 ## Esercizio 6 - Iteratori
 
-Il progetto `Iterators` è finalizzato alla comprensione delle analogie e delle differenze tra gli Stream di Java 8 e gli enumerabili di .Net.
+Il progetto `Iterators` è finalizzato alla comprensione delle analogie e delle differenze tra gli Stream di Java 8 e gli enumerabili di .NET.
 Per ciò, viene fornita la classe `Java8StreamOperations` contenente le firme di alcuni metodi estensione aventi gli stessi nomi dei metodi dell'interfaccia `Stream` di Java 8 (p.e. `map`, `filter`, `reduce`, etc).
 
 Scopo dell'esercizio è implementare i suddetti metodi --- auspicabilmente sfruttando il costrutto degli [iteratori di C-Sharp](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/iterators) -- affinchè i metodi della classe `Java8StreamOperations` si comportino come gli omonimi definiti in Java, a cui siamo abituati.
-Per varificare la correttezza delle proprie implementazioni, l'esercizio prevede infine che la pipeline di elaborazione presente nella classe `Program` venga riscritta sfruttando i metodi estensione precedentemente implementati.
+Per verificare la correttezza delle proprie implementazioni, l'esercizio prevede infine che la pipeline di elaborazione presente nella classe `Program` venga riscritta sfruttando i metodi estensione precedentemente implementati.
 

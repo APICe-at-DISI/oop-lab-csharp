@@ -11,12 +11,18 @@ namespace OperatorsOverloading
         public static void Main()
         {
             List<int> lst = List.From(1, 2, 3, 4, 5);
-            int[] res1 = { 3, 4, 5, 4, 3 };
+
+            int[] res1 = new int[] { 3, 4, 5, 4, 3 };
+
+            // here { ... } is the same as new int[] { ... }
             int[] res2 = { 3, 4, 4, 3 };
 
             List<int> lst1 = List.Append(lst.Tail.Tail, List.From(4, 3));
 
-            if (lst1 != res1)
+            // Look at this cast!
+            // It is possible because of the conversion operator implemented in list
+            // Because it is implicit, we can also remove the cast here
+            if (lst1 != (List<int>) res1)
             {
                 throw new Exception("Wrong implementation");
             }
@@ -30,6 +36,9 @@ namespace OperatorsOverloading
             }
 
             List<int> lst3 = lst2;
+
+            // Look at this assignment!
+            // It is possible because of the implicit conversion operator implemented in list
             lst3 -= 5;
 
             if (lst3.Tail.Tail != res2)
