@@ -23,9 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "5-DelegatesAndEvents", "5-D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "6-Iterators", "6-Iterators\6-Iterators.csproj", "{DF58023E-8306-4474-9797-2C74DE8867AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2-IndexersTests", "2-IndexersTests\2-IndexersTests.csproj", "{409DBC6D-28F3-4BE4-87CD-3C4B1635AEC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2-IndexersTests", "2-IndexersTests\2-IndexersTests.csproj", "{409DBC6D-28F3-4BE4-87CD-3C4B1635AEC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4-ExtensionMethodsTests", "4-ExtensionMethodsTests\4-ExtensionMethodsTests.csproj", "{2631E00F-4F5D-4D0B-903E-A0336D8E35CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "4-ExtensionMethodsTests", "4-ExtensionMethodsTests\4-ExtensionMethodsTests.csproj", "{2631E00F-4F5D-4D0B-903E-A0336D8E35CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -4,19 +4,28 @@ using System.Linq;
 
 namespace Properties
 {
+    /// <summary>
+    /// A factory class for building <see cref="ISet{T}">decks</see> of <see cref="Card"/>s.
+    /// </summary>
     public class DeckFactory
     {
         private string[] seeds;
 
         private string[] names;
 
+        /// <summary>
+        /// Get all the seeds of the cards.
+        /// </summary>
         // TODO improve
-        public IList<string> Seeds 
+        public IList<string> Seeds
         {
             get { return this.seeds.ToList(); }
             set { this.seeds = value.ToArray(); }
         }
 
+        /// <summary>
+        /// Gets all the names of the cards.
+        /// </summary>
         // TODO improve
         public IList<string> Names
         {
@@ -24,8 +33,17 @@ namespace Properties
             set { this.names = value.ToArray(); }
         }
 
+        /// <summary>
+        /// Gets the size of the deck.
+        /// </summary>
         public int DeckSize => this.names.Length * this.seeds.Length;
 
+        /// <summary>
+        /// Gets a deck of cards.
+        /// </summary>
+        /// <exception cref="InvalidOperationException">
+        /// if <see cref="names"/> or <see cref="seeds"/> are not set.
+        /// </exception>
         public ISet<Card> Deck
         {
             get
