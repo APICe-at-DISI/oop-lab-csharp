@@ -1,11 +1,14 @@
-using System;
-
 namespace DelegatesAndEvents
 {
+    using System;
 
-    class Program
+    /// <summary>
+    /// The runnable entrypoint of the exercise.
+    /// </summary>
+    public class Program
     {
-        static void Main(string[] args)
+        /// <inheritdoc cref="Program" />
+        public static void Main()
         {
             bool c1, c2, c3;
             IObservableList<int> list = new ObservableList<int>() { 1, 2, 3 };
@@ -58,9 +61,8 @@ namespace DelegatesAndEvents
             {
                 throw new Exception("Wrong implementation");
             }
-            
+
             Console.WriteLine("Ok");
-            Console.ReadLine();
         }
     }
 }

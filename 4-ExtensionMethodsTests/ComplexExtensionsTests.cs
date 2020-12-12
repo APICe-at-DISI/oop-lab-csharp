@@ -1,7 +1,7 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
 namespace ExtensionMethods
 {
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class ComplexExtensionsTests
     {
@@ -11,37 +11,37 @@ namespace ExtensionMethods
         [TestMethod]
         public void AddTest()
         {
-            Assert.AreEqual(new Complex(2, 2), c1.Add(c2));
+            Assert.AreEqual(new Complex(2, 2), this.c1.Add(this.c2));
         }
 
         [TestMethod]
         public void SubtractTest()
         {
-            Assert.AreEqual(new Complex(0, 0), c1.Subtract(c2));
+            Assert.AreEqual(new Complex(0, 0), this.c1.Subtract(this.c2));
         }
 
         [TestMethod]
         public void MultiplyTest()
         {
-            Assert.AreEqual(new Complex(0, 2), c1.Multiply(c2));
+            Assert.AreEqual(new Complex(0, 2), this.c1.Multiply(this.c2));
         }
 
         [TestMethod]
         public void DivideTest()
         {
-            Assert.AreEqual(new Complex(1, 0), c1.Divide(c2));
+            Assert.AreEqual(new Complex(1, 0), this.c1.Divide(this.c2));
         }
 
         [TestMethod]
         public void ConjugateTest()
         {
-            Assert.AreEqual(new Complex(1, -1), c1.Conjugate());
+            Assert.AreEqual(new Complex(1, -1), this.c1.Conjugate());
         }
 
         [TestMethod]
         public void ReciprocalTest()
         {
-            Assert.AreEqual(new Complex(0.5, -0.5), c1.Reciprocal());
+            Assert.AreEqual(new Complex(0.5, -0.5), this.c1.Reciprocal());
         }
     }
 }

@@ -1,9 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
 namespace Properties
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// A factory class for building <see cref="ISet{T}">decks</see> of <see cref="Card"/>s.
     /// </summary>
@@ -14,7 +14,7 @@ namespace Properties
         private string[] names;
 
         /// <summary>
-        /// Get all the seeds of the cards.
+        /// Gets or sets all the seeds of the cards.
         /// </summary>
         // TODO improve
         public IList<string> Seeds
@@ -24,7 +24,7 @@ namespace Properties
         }
 
         /// <summary>
-        /// Gets all the names of the cards.
+        /// Gets or sets all the names of the cards.
         /// </summary>
         // TODO improve
         public IList<string> Names
@@ -53,13 +53,16 @@ namespace Properties
                     throw new InvalidOperationException();
                 }
 
-                return new HashSet<Card>(Enumerable.Range(0, this.names.Length)
-                    .SelectMany(i => Enumerable.Repeat(i, this.seeds.Length)
-                        .Zip(Enumerable.Range(0, this.seeds.Length), (n, s) => Tuple.Create(this.names[n], this.seeds[s], n)))
+                return new HashSet<Card>(Enumerable
+                    .Range(0, this.names.Length)
+                    .SelectMany(i => Enumerable
+                        .Repeat(i, this.seeds.Length)
+                        .Zip(
+                            Enumerable.Range(0, this.seeds.Length),
+                            (n, s) => Tuple.Create(this.names[n], this.seeds[s], n)))
                     .Select(tuple => new Card(tuple))
                     .ToList());
             }
         }
     }
-
 }

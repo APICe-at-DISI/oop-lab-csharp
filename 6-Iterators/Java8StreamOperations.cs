@@ -1,7 +1,7 @@
-using System;
-using System.Collections.Generic;
-
-namespace Iterators {
+namespace Iterators
+{
+    using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// The static class declares extension methods which use the same naming used by Java 8 with Stream API.
@@ -106,7 +106,7 @@ namespace Iterators {
         public static TOther Reduce<TAny, TOther>(this IEnumerable<TAny> sequence, TOther seed, Func<TOther, TAny, TOther> reducer)
         {
             bool first = true;
-            TOther accumulator = default(TOther);
+            TOther accumulator = default;
 
             foreach (var element in sequence)
             {
@@ -148,7 +148,6 @@ namespace Iterators {
                     yield return element;
                 }
             }
-
         }
 
         /// <summary>
@@ -185,7 +184,6 @@ namespace Iterators {
         /// <returns>the new sequence.</returns>
         public static IEnumerable<TAny> TakeWhile<TAny>(this IEnumerable<TAny> sequence, Predicate<TAny> predicate)
         {
-
             foreach (var element in sequence)
             {
                 if (!predicate(element))

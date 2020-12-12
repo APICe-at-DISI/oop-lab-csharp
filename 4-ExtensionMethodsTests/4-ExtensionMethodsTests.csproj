@@ -11,7 +11,7 @@
     <Product>OOP Lab - C#</Product>
     <Copyright>Copyright © 2020</Copyright>
     <OutputType>Library</OutputType>
-    <Nullable>annotations</Nullable>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>

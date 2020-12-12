@@ -1,6 +1,6 @@
-using System;
-
-namespace Properties {
+namespace Properties
+{
+    using System;
 
     /// <summary>
     /// The class models a card.
@@ -9,18 +9,18 @@ namespace Properties {
     {
         private readonly string seed;
         private readonly string name;
-        private readonly int ordial;
+        private readonly int ordinal;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Card"/> class.
         /// </summary>
         /// <param name="name">the name of the card.</param>
         /// <param name="seed">the seed of the card.</param>
-        /// <param name="ordial">the ordinal number of the card.</param>
-        public Card(string name, string seed, int ordial)
+        /// <param name="ordinal">the ordinal number of the card.</param>
+        public Card(string name, string seed, int ordinal)
         {
             this.name = name;
-            this.ordial = ordial;
+            this.ordinal = ordinal;
             this.seed = seed;
         }
 
@@ -36,9 +36,9 @@ namespace Properties {
         /// <summary>
         /// Gets the seed of the card.
         /// </summary>
-        public String Seed
+        public string Seed
         {
-            get { return seed; }
+            get { return this.seed; }
         }
 
         /// <summary>
@@ -46,25 +46,27 @@ namespace Properties {
         /// </summary>
         public string Name
         {
-            get => name;
+            get => this.name;
         }
 
         /// <summary>
         /// Gets the ordinal number of the card.
         /// </summary>
-        public int Ordial => ordial;
+        public int Ordinal => this.ordinal;
 
         /// <inheritdoc cref="object.ToString"/>
         public override string ToString()
         {
             // TODO understand string interpolation
-            return $"{this.GetType().Name}(Name={this.Name}, Seed={this.Seed}, Ordinal={this.Ordial})";
+            return $"{this.GetType().Name}(Name={this.Name}, Seed={this.Seed}, Ordinal={this.Ordinal})";
         }
 
         /// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
-        protected bool Equals(Card other)
+        public bool Equals(Card other)
         {
-            return string.Equals(seed, other.seed) && string.Equals(name, other.name) && ordial == other.ordial;
+            return string.Equals(this.seed, other.seed)
+                   && string.Equals(this.name, other.name)
+                   && this.ordinal == other.ordinal;
         }
 
         /// <inheritdoc cref="object.Equals(object?)"/>
@@ -74,28 +76,24 @@ namespace Properties {
             {
                 return false;
             }
+
             if (this == obj)
             {
                 return true;
             }
+
             if (obj.GetType() != this.GetType())
             {
                 return false;
             }
-            return Equals(obj as Card);
+
+            return this.Equals(obj as Card);
         }
 
         /// <inheritdoc cref="object.GetHashCode"/>
         public override int GetHashCode()
         {
-            unchecked
-            {
-                var hashCode = (seed != null ? seed.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (name != null ? name.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ ordial;
-                return hashCode;
-            }
+            return HashCode.Combine(this.seed, this.name, this.ordinal);
         }
     }
-
 }

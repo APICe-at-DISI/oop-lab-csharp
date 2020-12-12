@@ -1,44 +1,47 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
 namespace Indexers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <inheritdoc cref="IMap2D{TKey1,TKey2,TValue}" />
     public class Map2D<TKey1, TKey2, TValue> : IMap2D<TKey1, TKey2, TValue>
     {
         private readonly Dictionary<Tuple<TKey1, TKey2>, TValue> data = new Dictionary<Tuple<TKey1, TKey2>, TValue>();
 
+        /// <inheritdoc cref="IMap2D{TKey1, TKey2, TValue}.NumberOfElements" />
+        public int NumberOfElements => this.data.Count;
+
         /// <inheritdoc cref="IMap2D{TKey1, TKey2, TValue}.this" />
         public TValue this[TKey1 key1, TKey2 key2]
         {
-            get { return data[Tuple.Create(key1, key2)]; }
-            set { data[Tuple.Create(key1, key2)] = value; }
+            get { return this.data[Tuple.Create(key1, key2)]; }
+            set { this.data[Tuple.Create(key1, key2)] = value; }
         }
 
         /// <inheritdoc cref="IMap2D{TKey1, TKey2, TValue}.GetRow(TKey1)" />
         public IList<Tuple<TKey2, TValue>> GetRow(TKey1 key1)
         {
-            return data.Keys
-                .Where(k1k2 => k1k2.Item1.Equals(key1))
-                .Select(k1k2 => Tuple.Create(k1k2.Item2, data[k1k2]))
+            return this.data.Keys
+                .Where(tuple => tuple.Item1.Equals(key1))
+                .Select(tuple => Tuple.Create(tuple.Item2, this.data[tuple]))
                 .ToList();
         }
 
         /// <inheritdoc cref="IMap2D{TKey1, TKey2, TValue}.GetColumn(TKey2)" />
         public IList<Tuple<TKey1, TValue>> GetColumn(TKey2 key2)
         {
-            return data.Keys
-                .Where(k1k2 => k1k2.Item2.Equals(key2))
-                .Select(k1k2 => Tuple.Create(k1k2.Item1, data[k1k2]))
+            return this.data.Keys
+                .Where(tuple => tuple.Item2.Equals(key2))
+                .Select(tuple => Tuple.Create(tuple.Item1, this.data[tuple]))
                 .ToList();
         }
 
         /// <inheritdoc cref="IMap2D{TKey1, TKey2, TValue}.GetElements" />
         public IList<Tuple<TKey1, TKey2, TValue>> GetElements()
         {
-            return data.Keys
-                .Select(k1k2 => Tuple.Create(k1k2.Item1, k1k2.Item2, data[k1k2]))
+            return this.data.Keys
+                .Select(tuple => Tuple.Create(tuple.Item1, tuple.Item2, this.data[tuple]))
                 .ToList();
         }
 
@@ -56,13 +59,10 @@ namespace Indexers
             }
         }
 
-        /// <inheritdoc cref="IMap2D{TKey1, TKey2, TValue}.NumberOfElements" />
-        public int NumberOfElements => data.Count;
-
         /// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
-        protected bool Equals(Map2D<TKey1, TKey2, TValue> other)
+        public bool Equals(Map2D<TKey1, TKey2, TValue> other)
         {
-            return Equals(data, other.data);
+            return Equals(this.data, other.data);
         }
 
         /// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
@@ -70,7 +70,7 @@ namespace Indexers
         {
             if (other is Map2D<TKey1, TKey2, TValue> otherMap2d)
             {
-                return Equals(otherMap2d);
+                return this.Equals(otherMap2d);
             }
 
             return false;
@@ -83,21 +83,24 @@ namespace Indexers
             {
                 return false;
             }
+
             if (obj == this)
             {
                 return true;
             }
+
             if (obj.GetType() != this.GetType())
             {
                 return false;
             }
-            return Equals(obj as Map2D<TKey1, TKey2, TValue>);
+
+            return this.Equals(obj as Map2D<TKey1, TKey2, TValue>);
         }
 
         /// <inheritdoc cref="object.GetHashCode"/>
         public override int GetHashCode()
         {
-            return data != null ? data.GetHashCode() : 0;
+            return this.data != null ? this.data.GetHashCode() : 0;
         }
 
         /// <inheritdoc cref="IMap2D{TKey1, TKey2, TValue}.ToString"/>

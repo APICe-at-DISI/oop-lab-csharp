@@ -1,53 +1,32 @@
-using System.Collections.Generic;
-using System.Linq;
+using System;
 
 namespace OperatorsOverloading
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The class models an immutable linked list.
     /// </summary>
     /// <typeparam name="TValue">the type of the items of the list.</typeparam>
     public abstract class List<TValue>
     {
-        /// <inheritdoc cref="List{TValue}"/>
-        internal sealed class HeadTail<THead> : List<THead>
+        /// <inheritdoc cref="IEquatable{T}.Equals(T)" />
+        public bool Equals(List<TValue> other)
         {
-            /// <inheritdoc cref="List{TValue}.Head"/>
-            public override THead Head { get; }
-
-            /// <inheritdoc cref="List{TValue}.Tail"/>
-            public override List<THead> Tail { get; }
-
-            public HeadTail(THead head, List<THead> tail)
-            {
-                this.Head = head;
-                this.Tail = tail ?? new Empty<THead>();
-            }
-
-            /// <inheritdoc cref="List{TValue}.IsNil"/>
-            public override bool IsNil { get => false; }
-
-            /// <inheritdoc cref="List{TValue}.Length"/>
-            public override int Length { get => 1 + this.Tail.Length; }
+            return this == other;
         }
 
-        /// <summary>
-        /// The class models an empty list.
-        /// </summary>
-        /// <inheritdoc cref="List{TValue}"/>
-        internal sealed class Empty<TList> : List<TList>
+        /// <inheritdoc cref="object.Equals(object?)" />
+        public override bool Equals(object obj)
         {
-            /// <inheritdoc cref="List{TValue}.Head"/>
-            public override TList Head { get => default; }
+            return obj is List<TValue> list && this == list;
+        }
 
-            /// <inheritdoc cref="List{TValue}.Tail"/>
-            public override List<TList> Tail { get => null; }
-
-            /// <inheritdoc cref="List{TValue}.IsNil"/>
-            public override bool IsNil { get => true; }
-
-            /// <inheritdoc cref="List{TValue}.Length"/>
-            public override int Length { get => 0; }
+        /// <inheritdoc cref="object.GetHashCode" />
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(this.Head, this.Tail, this.IsNil, this.Length);
         }
 
         /// <summary>
@@ -61,7 +40,7 @@ namespace OperatorsOverloading
         public abstract List<TValue> Tail { get; }
 
         /// <summary>
-        /// Gets <see langword="true"/> if the list is empty, <see langword="false"/> otherwhise.
+        /// Gets a value indicating whether the list is empty or not.
         /// </summary>
         public abstract bool IsNil { get; }
 
@@ -71,26 +50,26 @@ namespace OperatorsOverloading
         public abstract int Length { get; }
 
         /// <summary>
-        /// Converts this list into a list of lists, which are each one the tail of the previous one.
+        /// Build a new list from the given array of elements.
         /// </summary>
-        /// <returns>a list of lists</returns>
-        public IEnumerable<List<TValue>> Flatten()
-        {
-            List<TValue> curr = this;
-            for (; !curr.IsNil; curr = curr.Tail)
-            {
-                yield return curr;
-            }
-        }
+        /// <param name="enumerable">the array of elements to put on the list.</param>
+        /// <returns>a new list with the given elements.</returns>
+        public static implicit operator List<TValue>(TValue[] enumerable) =>
+            List.From(enumerable as IEnumerable<TValue>);
 
         /// <summary>
-        /// Flatten this list into an enumeration of each item.
+        /// Build a new list from the given element.
         /// </summary>
-        /// <returns>an enumeration of each item of this list.</returns>
-        public IEnumerable<TValue> ToFlat() => Flatten().Select(ht => ht.Head);
+        /// <param name="element">the element to put on the list.</param>
+        /// <returns>a new list with only the given element.</returns>
+        public static implicit operator List<TValue>(TValue element) => List.Of(element);
 
-        /// <inheritdoc cref="object.ToString"/>
-        public override string ToString() => "[ " + string.Join(", ", this.Flatten().Select(l => l.Head)) + " ]";
+        /// <summary>
+        /// Build a new array from the given list.
+        /// </summary>
+        /// <param name="list">the list to transform.</param>
+        /// <returns>an array containing the elements of the list.</returns>
+        public static explicit operator TValue[](List<TValue> list) => list.ToFlat().ToArray();
 
         /// <summary>
         /// Determines whether two lists are equal by comparing each of the elements of the lists.
@@ -107,6 +86,7 @@ namespace OperatorsOverloading
             {
                 return list1 == list2;
             }
+
             return Enumerable.SequenceEqual(list1.ToFlat(), list2.ToFlat());
         }
 
@@ -186,25 +166,68 @@ namespace OperatorsOverloading
         }
 
         /// <summary>
-        /// Build a new list from the given array of elements.
+        /// Converts this list into a list of lists, which are each one the tail of the previous one.
         /// </summary>
-        /// <param name="enumerable">the array of elements to put on the list.</param>
-        /// <returns>a new list with the given elements.</returns>
-        public static implicit operator List<TValue>(TValue[] enumerable) => List.From(enumerable as IEnumerable<TValue>);
+        /// <returns>a list of lists.</returns>
+        public IEnumerable<List<TValue>> Flatten()
+        {
+            List<TValue> curr = this;
+            for (; !curr.IsNil; curr = curr.Tail)
+            {
+                yield return curr;
+            }
+        }
 
         /// <summary>
-        /// Build a new list from the given element.
+        /// Flatten this list into an enumeration of each item.
         /// </summary>
-        /// <param name="element">the element to put on the list.</param>
-        /// <returns>a new list with only the given element.</returns>
-        public static implicit operator List<TValue>(TValue element) => List.Of(element);
+        /// <returns>an enumeration of each item of this list.</returns>
+        public IEnumerable<TValue> ToFlat() => this.Flatten().Select(ht => ht.Head);
+
+        /// <inheritdoc cref="object.ToString"/>
+        public override string ToString() =>
+            "[ " + string.Join(", ", this.Flatten().Select(l => l.Head)) + " ]";
+
+        /// <inheritdoc cref="List{TValue}"/>
+        internal sealed class HeadTail<THead> : List<THead>
+        {
+            /// <inheritdoc cref="List{TValue}.Head"/>
+            public override THead Head { get; }
+
+            /// <inheritdoc cref="List{TValue}.Tail"/>
+            public override List<THead> Tail { get; }
+
+            public HeadTail(THead head, List<THead> tail)
+            {
+                this.Head = head;
+                this.Tail = tail ?? new Empty<THead>();
+            }
+
+            /// <inheritdoc cref="List{TValue}.IsNil"/>
+            public override bool IsNil { get => false; }
+
+            /// <inheritdoc cref="List{TValue}.Length"/>
+            public override int Length { get => 1 + this.Tail.Length; }
+        }
 
         /// <summary>
-        /// Build a new array from the given list.
+        /// The class models an empty list.
         /// </summary>
-        /// <param name="list">the list to transform.</param>
-        /// <returns>an array containing the elements of the list.</returns>
-        public static explicit operator TValue[](List<TValue> list) => list.ToFlat().ToArray();
+        /// <inheritdoc cref="List{TValue}"/>
+        internal sealed class Empty<TList> : List<TList>
+        {
+            /// <inheritdoc cref="List{TValue}.Head"/>
+            public override TList Head { get => default; }
+
+            /// <inheritdoc cref="List{TValue}.Tail"/>
+            public override List<TList> Tail { get => null; }
+
+            /// <inheritdoc cref="List{TValue}.IsNil"/>
+            public override bool IsNil { get => true; }
+
+            /// <inheritdoc cref="List{TValue}.Length"/>
+            public override int Length { get => 0; }
+        }
     }
 
     /// <summary>
@@ -227,7 +250,8 @@ namespace OperatorsOverloading
         /// <param name="head">the element to use as head of the list.</param>
         /// <param name="tail">the elements to use as tail of the list.</param>
         /// <returns>a new list with the given elements.</returns>
-        public static List<TItem> Of<TItem>(TItem head, List<TItem> tail) => new List<TItem>.HeadTail<TItem>(head, tail);
+        public static List<TItem> Of<TItem>(TItem head, List<TItem> tail) =>
+            new List<TItem>.HeadTail<TItem>(head, tail);
 
         /// <summary>
         /// Build a new empty list.
@@ -262,7 +286,8 @@ namespace OperatorsOverloading
         /// <param name="items">the other elements to put on the list, if any.</param>
         /// <typeparam name="TItem">the type of the items of the list.</typeparam>
         /// <returns>a new list with the given elements.</returns>
-        public static List<TItem> From<TItem>(TItem item1, params TItem[] items) => List.From(Enumerable.Repeat(item1, 1).Concat(items));
+        public static List<TItem> From<TItem>(TItem item1, params TItem[] items) =>
+            List.From(Enumerable.Repeat(item1, 1).Concat(items));
 
         /// <summary>
         /// Append <paramref name="list2"/> to <paramref name="list1"/>.

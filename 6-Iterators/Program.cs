@@ -1,13 +1,15 @@
-using System;
-using System.Collections.Generic;
-
 namespace Iterators
 {
+    using System;
+    using System.Collections.Generic;
 
-    class Program
+    /// <summary>
+    /// The runnable entrypoint of the exercise.
+    /// </summary>
+    public class Program
     {
-
-        static void Main(string[] args)
+        /// <inheritdoc cref="Program" />
+        public static void Main()
         {
             const int len = 50;
             int?[] numbers = new int?[len];
@@ -40,6 +42,7 @@ namespace Iterators
                     {
                         d[n]++;
                     }
+
                     return d;
                 });
 
@@ -49,8 +52,6 @@ namespace Iterators
             {
                 Console.WriteLine(kv);
             }
-
-            Console.ReadLine();
         }
     }
 }

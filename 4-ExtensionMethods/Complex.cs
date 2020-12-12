@@ -1,11 +1,11 @@
-using System;
-
 namespace ExtensionMethods
 {
+    using System;
+
     /// <inheritdoc cref="IComplex"/>
     public class Complex : IComplex
     {
-        private const double TOLERANCE = 1E-7;
+        private const double Tolerance = 1E-7;
 
         private readonly double re;
         private readonly double im;
@@ -21,34 +21,35 @@ namespace ExtensionMethods
             this.im = im;
         }
 
+        /// <inheritdoc cref="IComplex.Real"/>
+        public double Real => this.re;
+
+        /// <inheritdoc cref="IComplex.Imaginary"/>
+        public double Imaginary => this.im;
+
+        /// <inheritdoc cref="IComplex.Modulus"/>
+        public double Modulus => Math.Sqrt(this.re * this.re + this.im * this.im);
+
+        /// <inheritdoc cref="IComplex.Phase"/>
+        public double Phase => Math.Atan2(this.im, this.re);
+
+        /// <inheritdoc cref="IComplex.ToString"/>
+        public override string ToString() => $"{this.re} {(this.im >= 0 ? "+" : "-")} i{Math.Abs(this.im)}";
+
         /// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
         public bool Equals(IComplex other)
         {
-            return other != null && Math.Abs(Imaginary - other.Imaginary) < TOLERANCE && Math.Abs(Real - other.Real) < TOLERANCE;
+            return other != null
+                   && Math.Abs(this.Imaginary - other.Imaginary) < Tolerance
+                   && Math.Abs(this.Real - other.Real) < Tolerance;
         }
-
-        /// <inheritdoc cref="IComplex.Real"/>
-        public double Real => re;
-
-
-        /// <inheritdoc cref="IComplex.Imaginary"/>
-        public double Imaginary => im;
-
-        /// <inheritdoc cref="IComplex.Modulus"/>
-        public double Modulus => Math.Sqrt(re * re + im * im);
-
-        /// <inheritdoc cref="IComplex.Phase"/>
-        public double Phase => Math.Atan2(im, re);
-
-        /// <inheritdoc cref="IComplex.ToString"/>
-        public override string ToString() => $"{re} {(im >= 0 ? "+" : "-")} i{Math.Abs(im)}";
 
         /// <inheritdoc cref="object.Equals(object?)"/>
         public override bool Equals(object obj)
         {
             if (obj is IComplex)
             {
-                return Equals(obj as IComplex);
+                return this.Equals(obj as IComplex);
             }
 
             return false;
@@ -57,11 +58,7 @@ namespace ExtensionMethods
         /// <inheritdoc cref="object.GetHashCode"/>
         public override int GetHashCode()
         {
-            var hashCode = 0;
-            hashCode = (hashCode * 397) ^ re.GetHashCode();
-            hashCode = (hashCode * 397) ^ im.GetHashCode();
-            return hashCode;
+            return HashCode.Combine(this.re, this.im);
         }
-
     }
 }

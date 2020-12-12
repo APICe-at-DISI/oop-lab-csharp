@@ -1,8 +1,8 @@
-using System;
-using System.Collections.Generic;
-
 namespace Indexers
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
     /// A bidimentional map.
     /// </summary>
@@ -12,6 +12,11 @@ namespace Indexers
     public interface IMap2D<TKey1, TKey2, TValue> : IEquatable<IMap2D<TKey1, TKey2, TValue>>
     {
         /// <summary>
+        /// Gets the number of values in the map.
+        /// </summary>
+        int NumberOfElements { get; }
+
+        /// <summary>
         /// The indexer used to access the value of the map.
         /// </summary>
         /// <param name="key1">the first key.</param>
@@ -20,7 +25,7 @@ namespace Indexers
         TValue this[TKey1 key1, TKey2 key2] { get; set; }
 
         /// <inheritdoc cref="object.ToString" />
-        /// <remarks>The string is a textual representation of the bidimentional map.</remarks>
+        /// <remarks><para>The string is a textual representation of the bidimentional map.</para></remarks>
         string ToString();
 
         /// <summary>
@@ -50,10 +55,5 @@ namespace Indexers
         /// <param name="keys2">all the column keys.</param>
         /// <param name="generator">the bifunction that generates the value given the couple of keys.</param>
         void Fill(IEnumerable<TKey1> keys1, IEnumerable<TKey2> keys2, Func<TKey1, TKey2, TValue> generator);
-
-        /// <summary>
-        /// Gets the number of values in the map.
-        /// </summary>
-        int NumberOfElements { get; }
     }
 }
