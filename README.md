@@ -27,11 +27,14 @@ L'esercizio si può considerare concluso quando il test termina con successo.
 
 ## Esercizio 2 - Eccezioni
 
-Il progetto `Exceptions` consiste in una semplice libreria che offre una specifica struttura  dati (`FixedSizeQueue`) per storicizzare elementi generici.
+Il progetto `Exceptions` contiene l'intefaccia `IFixedSizeQueue` che rappresenta una collezione mutevole di tipo FIFO dalla capacità prefissata.
+Un tentativo di inserire un elemento in una coda piena, deve produrre una `FullQueueException`.
+Invece, un tentativo di prelevare un elemento da una cosa vuota, deve produrre una `EmptyQueueException`.
 
-Scopo dell'esercizio è capire il funzionamento di questa struttura dati e completare le parti mancanti utilizzando i due tipi di eccezione forniti: `EmptyQueueException` e `FullQueueException`.
 
-Il test contenuto in `TestFixedSizeQueue.cs` tenta di chiarire il comportamento atteso per le entità soprariportate.
+Scopo dell'esercizio è completare l'implementazione della classe `FixedSizeQueue`, assicurandosi di lanciare correttamente o due tipi di eccezione forniti: `EmptyQueueException` e `FullQueueException`.
+
+Il test contenuto in `TestFixedSizeQueue.cs` verifica e chiarisce il comportamento atteso per le entità soprariportate.
 L'esercizio si può considerare concluso quando tutti i test terminano con successo.
 
 
