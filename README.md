@@ -2,40 +2,36 @@
 
 L'ordine degli esercizi sarebbe il seguente:
 
-1. Properties
-2. Indexer
+1. Collections
+2. Exceptions
 3. OperatorsOverloading
 4. ExtensionMethods
 5. DelegatesAndEvents
-6. Iterators
 
 Svolgere gli esercizi in ordine diverso non è un problema.
 
 Nota generale per tutti gli esercizi: lo statement `throw new NotImplementedException();` è un segnaposto che va sempre **sostituito** con del codice prodotto da voi.
 
-## Esercizio 1 - Proprietà
+## Esercizio 1 - Collezioni
 
-Il progetto `Properties` consiste in un semplice programma a riga di comando che permette di generare un mazzo di carte (deck) a partire dai nomi dei semi (p.e. fiori, quadri, picche e cuori) e dai nomi delle carte (p.e. asso, ..., fante, regina, re).
+Il progetto `Collections` consiste in una semplice libreria che offre la possibilità di modellare un utente di un generico social network.
 
-La classe `Program` rappresenta il punto d'ingresso dell'applicazione e, come esempio, genera un mazzo di carte italiane.
-La classe `DeckFactory` permette di costruire un certo numero di istanze della classe `Card` (che andranno a comporre il mazzo) a partire dai nomi dei semi e delle carte.
-Queste classi sono state scritte da un programmatore Java, non abituato a scrivere codice C-Sharp.
+Scopo dell'esercizio è approfondire le Collections e il loro utilizzo, in particolare:
 
-Scopo dell'esercizio è "convertire" il codice dallo stile Java allo stile C-Sharp, ad esempio usando le proprietà e gli altri costrutti tipici del secondo linguaggio.
+1. Osservare e capire l'interfaccia `IUser` e `ISocialNetworkUser`
+2. Completare l'implementazione di `User` e `SocialNetworkUser`
 
-Notare anche che nel codice vengono impiegate sia le stringhe formato (alcuni esempi qui: https://msdn.microsoft.com/it-it/library/system.string.format(v=vs.110).aspx) che l'interpolazione di stringhe (alcuni esempi: https://docs.microsoft.com/it-it/dotnet/csharp/language-reference/keywords/interpolated-strings).
-La comprensione di questi aspetti del linguaggio è auspicabile.
+Il test contenuto in `TestSocialNetworkUser.cs` tenta di chiarire il comportamento atteso per le entità soprariportate.
+L'esercizio si può considerare concluso quando il test termina con successo.
 
 
-## Esercizio 2 - Indicizzatori & generici
+## Esercizio 2 - Eccezioni
 
-Il progetto `Indexers` consiste in una semplice libreria che fornisce l'astrazione di mappa bidimensionale (cioè mappa con due chiavi). 
-Il progetto fornisce l'interfaccia `IMap2D<TKey1, TKey2, TValue>`, che mostra i metodi forniti da una mappa bi-dimensionale.
-Le implementazioni dell'interfaccia `IMap2D` permettono di memorizzare valori di tipo `TValue` in quella che può essere pensata come una matrice sparsa, in cui le righe sono indicizzare con valori di tipo `TKey1` e le colonne con valori di tipo `TKey2`.
-Dato un oggetto `IMap<TKey1, TKey2, TValue> map` e due chiavi `k1` di tipo `TKey1` e `k2` di tipo `TKey2`, si accede al valore corrispondente con la sintassi `map[k1, k2]`.
+Il progetto `Exceptions` consiste in una semplice libreria che offre una specifica struttura  dati (`FixedSizeQueue`) per storicizzare elementi generici.
 
-Scopo dell'esercizio è implementare la classe `Map2D<TKey1, TKey2, TValue>`.
-Il test contenuto nel progetto `2-IndexersTests` tenta di chiarire il comportamento atteso per una classe che implementi `IMap2D`.
+Scopo dell'esercizio è capire il funzionamento di questa struttura dati e completare le parti mancanti utilizzando i due tipi di eccezione forniti: `EmptyQueueException` e `FullQueueException`.
+
+Il test contenuto in `TestFixedSizeQueue.cs` tenta di chiarire il comportamento atteso per le entità soprariportate.
 L'esercizio si può considerare concluso quando tutti i test terminano con successo.
 
 
@@ -86,7 +82,7 @@ Gli scopi dell'esercizio sono:
 
 - Implementare le operazioni sui numeri complessi, le cui firme sono presenti nella classe statica nella classe `ComplexExtensions`
 
-Il test contenuto nel progetto `4-ExtensionMethodsTest` tenta di chiarire il comportamento atteso per i metodi estensione suddetti.
+Il test contenuto in `ComplexExtensionsTests.cs` tenta di chiarire il comportamento atteso per i metodi estensione suddetti.
 L'esercizio si può considerare concluso quando tutti i test terminano con successo.
 
 ## Esercizio 5 - Delegati ed eventi
@@ -102,12 +98,4 @@ Scopo dell'esercizio è implementare la classe `ObservableList` in maniera tale 
 
 Il test contenuto nella classe `Program` tenta di chiarire il comportamento atteso per le implementazioni dell'interfaccia `IObservableList`.
 Esso mostra inoltre come è possibile registrare ascoltatori di eventi per una specifica lista.
-
-## Esercizio 6 - Iteratori
-
-Il progetto `Iterators` è finalizzato alla comprensione delle analogie e delle differenze tra gli Stream di Java 8 e gli enumerabili di .NET.
-Per ciò, viene fornita la classe `Java8StreamOperations` contenente le firme di alcuni metodi estensione aventi gli stessi nomi dei metodi dell'interfaccia `Stream` di Java 8 (p.e. `map`, `filter`, `reduce`, etc).
-
-Scopo dell'esercizio è implementare i suddetti metodi --- auspicabilmente sfruttando il costrutto degli [iteratori di C-Sharp](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/iterators) -- affinchè i metodi della classe `Java8StreamOperations` si comportino come gli omonimi definiti in Java, a cui siamo abituati.
-Per verificare la correttezza delle proprie implementazioni, l'esercizio prevede infine che la pipeline di elaborazione presente nella classe `Program` venga riscritta sfruttando i metodi estensione precedentemente implementati.
 
