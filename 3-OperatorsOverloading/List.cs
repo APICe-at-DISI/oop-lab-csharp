@@ -318,12 +318,25 @@ namespace OperatorsOverloading
         /// <returns>the result list.</returns>
         public static List<TItem> Append<TItem>(List<TItem> list1, List<TItem> list2)
         {
-            var elems = list1.Flatten().Select(l => l.Head).Reverse().ToArray();
-            List<TItem> curr = List.Of(elems.First(), list2);
+            List<TItem> curr;
 
-            foreach (var e in elems.Skip(1))
+            if (list1.IsNil)
             {
-                curr = List.Of(e, curr);
+                curr = list2;
+            }
+            else if (list2.IsNil)
+            {
+                curr = list1;
+            }
+            else
+            {
+                var elems = list1.Flatten().Select(l => l.Head).Reverse().ToArray();
+                curr = List.Of(elems.First(), list2);
+
+                foreach (var e in elems.Skip(1))
+                {
+                    curr = List.Of(e, curr);
+                }
             }
 
             return curr;
