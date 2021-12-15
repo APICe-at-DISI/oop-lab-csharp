@@ -64,11 +64,7 @@ namespace OperatorsOverloading
         /// </returns>
         public static bool operator ==(List<TValue> list1, List<TValue> list2)
         {
-            if (list1 is null || list2 is null)
-            {
-                return list1 == list2;
-            }
-
+            if (list1 is null || list2 is null) return ReferenceEquals(list1, list2);
             return Enumerable.SequenceEqual(list1.ToFlat(), list2.ToFlat());
         }
 
